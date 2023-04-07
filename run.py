@@ -22,4 +22,4 @@ def main():
 
 print("Welcome to Python Quiz Game \n")
 
-
+main()
