@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from string import ascii_lowercase
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -32,18 +33,22 @@ QUESTIONS =  {
 }
 
 
-for question, alternatives in QUESTIONS.items():
+for num, (question, alternatives) in enumerate(QUESTIONS.items(), start=1):
+    print(f"\nQuestion {num}:")
+    print(f"{question}")
     correct_answer = alternatives[0]
-    sorted_alternatives = sorted(alternatives)
-    for label, alternative in enumerate(sorted_alternatives):
-        print(f" {label} {alternative}")
+    labled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
+    for label, alternative in labled_alternatives.items():
+        print(f" {label}) {alternative}")
 
-    answer_label = int(input(f"{question} "))
-    answer = sorted_alternatives[answer_label]
+    answer_label = input("\nChoice? ").lower()
+    answer = labled_alternatives.get(answer_label)
     if answer == correct_answer:
-        print("\n Correct! \n")
+        print("\n Correct! \n")   
     else:
-        print( f" \n The answer is {correct_answer!r}, not {answer!r}\n")     
+        print( f"The answer is {correct_answer!r}, not {answer!r}\n")
+        print("Game Over")
+        exit()     
 
 
 
@@ -52,5 +57,5 @@ def main():
     Run all program functions.
     """
     print("Works")
-
+    
 # main()
