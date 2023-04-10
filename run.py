@@ -32,7 +32,8 @@ QUESTIONS =  {
     ],
 }
 
-
+points = 0
+num_correct = 0
 for num, (question, alternatives) in enumerate(QUESTIONS.items(), start=1):
     print(f"\nQuestion {num}:")
     print(f"{question}")
@@ -41,15 +42,21 @@ for num, (question, alternatives) in enumerate(QUESTIONS.items(), start=1):
     for label, alternative in labled_alternatives.items():
         print(f" {label}) {alternative}")
 
-    answer_label = input("\nChoice? ").lower()
-    answer = labled_alternatives.get(answer_label)
+    while (answer_label := input("\nChoice? ").lower()) not in labled_alternatives:
+        if answer_label == "q":
+            exit()
+        print(f"Please enter {','.join(labled_alternatives)} or q to quit")
+
+    answer = labled_alternatives[answer_label]
     if answer == correct_answer:
-        print("\n Correct! \n")   
+        print("\n Correct! \n")
+        points += 10   
+        num_correct += 1
     else:
         print( f"The answer is {correct_answer!r}, not {answer!r}\n")
         print("Game Over")
-        exit()     
-
+        print(f"\nYou scrored {points} points by answering {num_correct} questions correctly.")
+        exit()
 
 
 def main():
