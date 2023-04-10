@@ -1,4 +1,5 @@
 import gspread
+import random
 from google.oauth2.service_account import Credentials
 from string import ascii_lowercase
 
@@ -32,9 +33,10 @@ QUESTIONS =  {
     ],
 }
 
+questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
 points = 0
 num_correct = 0
-for num, (question, alternatives) in enumerate(QUESTIONS.items(), start=1):
+for num, (question, alternatives) in enumerate(questions, start=1):
     print(f"\nQuestion {num}:")
     print(f"{question}")
     correct_answer = alternatives[0]
@@ -45,7 +47,7 @@ for num, (question, alternatives) in enumerate(QUESTIONS.items(), start=1):
     while (answer_label := input("\nChoice? ").lower()) not in labled_alternatives:
         if answer_label == "q":
             exit()
-        print(f"Please enter {','.join(labled_alternatives)} or q to quit")
+        print(f"Not a valid option, please enter {','.join(labled_alternatives)} or q to quit")
 
     answer = labled_alternatives[answer_label]
     if answer == correct_answer:
@@ -55,7 +57,7 @@ for num, (question, alternatives) in enumerate(QUESTIONS.items(), start=1):
     else:
         print( f"The answer is {correct_answer!r}, not {answer!r}\n")
         print("Game Over")
-        print(f"\nYou scrored {points} points by answering {num_correct} questions correctly.")
+        print(f"\nYou scrored {points} points by answering {num_correct} questions correctly.\n")
         exit()
 
 
