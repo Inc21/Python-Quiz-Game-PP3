@@ -64,11 +64,37 @@ def welcome_page():
     if user_option == 1:
         run_game()
     elif user_option == 2:
-        pass
+        game_instructions()
     elif user_option == 3:
-        pass
+        high_scores()
     elif user_option == 4:
         exit()
+
+
+def game_instructions():
+    """
+    Displays game instructions. Includes option to return to main
+    menu by pressing enter key.
+    """
+    print("Game instructions\n")
+    try:
+        input("Press Enter to go back to main menu...")
+        welcome_page()
+    except SyntaxError:
+        pass
+
+
+def high_scores():
+    """
+    Gets to top 15 high scores from google sheets and displays them on the screen.
+    Also has option to return to main menu by pressing enter key.
+    """
+    print("High Scores for Google Sheets\n")
+    try:
+        input("Press Enter to go back to main menu...")
+        welcome_page()
+    except SyntaxError:
+        pass
 
 
 def game_over():
