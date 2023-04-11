@@ -15,9 +15,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
 
 
-print("\n Welcome to Python Quiz Game! \n")
-
-
 QUESTIONS =  {
     "How is a code block indicated in Python?": [
         "Indentation", "Brackets", "Key", "None of the above"
@@ -34,7 +31,41 @@ QUESTIONS =  {
 }
 
 
+USER_NAME = input("\nPlease enter your name: ").lower()
+
+def welcome_page():
+    """
+    Loaded up first when terminal opened with various options. 
+    """
+    print(f"\n Welcome to Python Quiz Game {USER_NAME}! \n")
+    print("Please select one of the fallowing option (type 1, 2, 3 or 4):")
+    print("1) Play the Quiz.")
+    print("2) Game Instructions.")
+    print("3) High Scores.")
+    print("4) Exit Game.\n")
+    
+    while True:
+        try:
+            user_option = int(input(f"Select your next move {USER_NAME}: "))
+        except ValueError:
+             print("Not a valid option, please enter 1, 2, 3 or 4!")
+        else:
+            break
+    if user_option == 1:
+        run_game()
+    elif user_option == 2:
+        pass
+    elif user_option == 3:
+        pass
+    elif user_option == 4:
+        exit()
+          
+
+
 def game_over():
+    """
+    This function is loaded when user answers a question wrong and giving them option to play again.
+    """
     game_over_user = input("Would you like to play again? Type Y for yes or Q to quit: ").lower()
     if game_over_user == "q":
         exit()
@@ -43,7 +74,7 @@ def game_over():
     else:
         print("\nNot a valid option, please enter Y or Q\n")
         game_over()
-                       
+
 
 def run_game():
     """
@@ -60,16 +91,17 @@ def run_game():
         for label, alternative in labeled_alternatives.items():
             print(f" {label}) {alternative}")
 
-        while (answer_label := input("\nChoice? ").lower()) not in labeled_alternatives:
+        while (answer_label := input("\nYour selection? ").lower()) not in labeled_alternatives:
             if answer_label == "q":
                 exit()
             print(f"Not a valid option, please enter {','.join(labeled_alternatives)} or q to quit")
 
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:
-            print("\n Correct! \n")
+            print("\nCORRECT!\n")
             points += 10
             num_correct += 1
+            print(f"Your have {points} points.")
         else:
             print( f"The answer is {correct_answer!r}, not {answer!r}\n")
             print("Game Over")
@@ -81,7 +113,8 @@ def main():
     """
     Run all program functions.
     """
-    run_game()
+    welcome_page()
+    # run_game()
 
 
 main()
