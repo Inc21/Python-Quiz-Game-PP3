@@ -1,5 +1,6 @@
 import random
 from string import ascii_lowercase
+from os import system, name
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -43,6 +44,16 @@ while True:
         print("Name must be 2 - 8 characters long.")
 
 
+def clear():
+      # for windows
+    if name == 'nt':
+        _ = system('cls')
+
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
+
+
 def welcome_page():
     """
     Loaded up first when terminal opened with various options. 
@@ -62,12 +73,16 @@ def welcome_page():
         else:
             break
     if user_option == 1:
+        clear()
         run_game()
     elif user_option == 2:
+        clear()
         game_instructions()
     elif user_option == 3:
+        clear()
         high_scores()
     elif user_option == 4:
+        clear()
         exit()
 
 
@@ -79,6 +94,7 @@ def game_instructions():
     print("Game instructions\n")
     try:
         input("Press Enter to go back to main menu...")
+        clear()
         welcome_page()
     except SyntaxError:
         pass
@@ -103,8 +119,10 @@ def game_over():
     """
     game_over_user = input("Would you like to play again? Type Y for yes or Q to quit: ").lower()
     if game_over_user == "q":
+        clear()
         exit()
     elif game_over_user == "y":
+        clear()
         run_game()
     else:
         print("\nNot a valid option, please enter Y or Q\n")
@@ -133,6 +151,7 @@ def run_game():
 
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:
+            clear()
             print("\nCORRECT!\n")
             points += 10
             num_correct += 1
