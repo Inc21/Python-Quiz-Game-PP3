@@ -31,24 +31,34 @@ QUESTIONS =  {
 }
 
 
-USER_NAME = input("\nPlease enter your name: ").lower()
+USER_NAME = ""
+while True:
+    try:
+        USER_NAME = input("\nPlease enter your name: ")
+    except ValueError:
+        print("Name must be 2 - 8 characters long.")
+    if len(USER_NAME) >= 2 and len(USER_NAME) <= 8 and USER_NAME.count("  ") <= 0:
+        break
+    else:
+        print("Name must be 2 - 8 characters long.")
+
 
 def welcome_page():
     """
     Loaded up first when terminal opened with various options. 
     """
     print(f"\n Welcome to Python Quiz Game {USER_NAME}! \n")
-    print("Please select one of the fallowing option (type 1, 2, 3 or 4):")
+    print("Please select one of the fallowing options (type 1, 2, 3 or 4):")
     print("1) Play the Quiz.")
     print("2) Game Instructions.")
     print("3) High Scores.")
     print("4) Exit Game.\n")
-    
+
     while True:
         try:
             user_option = int(input(f"Select your next move {USER_NAME}: "))
         except ValueError:
-             print("Not a valid option, please enter 1, 2, 3 or 4!")
+            print("Not a valid option, please enter 1, 2, 3 or 4!")
         else:
             break
     if user_option == 1:
@@ -59,7 +69,6 @@ def welcome_page():
         pass
     elif user_option == 4:
         exit()
-          
 
 
 def game_over():
