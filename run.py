@@ -112,8 +112,17 @@ def game_instructions():
     """
     ascii_instructions = pyfiglet.figlet_format("Instructions.", font="rectangles")
     print(ascii_instructions)
+    print("To play the game, all you have to do is answer all 25 questions correctly.")
+    print("Simple really isn't it?\n")
+    print("To select your answer, just enter corresponding letter and hit enter.")
+    print("Every correct answer is worth 10 points.\n")
+    print("Get question wrong and your game is over.")
+    print("Your points are recorded and uploaded to the database.\n")
+    print("Hopefully you did well enough to be in top 15 and see your name on the leaderboard.\n")
+    print("To end the game during play, you can enter letter Q to return to main menu")
+    print("but points you worked so hard to get are lost forever.\n")
     try:
-        input("Press Enter to go back to main menu...")
+        input(" -> Press Enter to go back to main menu...")
         clear()
         main_menu_page()
     except SyntaxError:
@@ -129,7 +138,7 @@ def high_scores():
     print(ascii_high_scores)
     print("High Scores from Google Sheets.\n")
     try:
-        input("Press Enter to go back to main menu...")
+        input("-> Press Enter to go back to main menu...")
         clear()
         main_menu_page()
     except SyntaxError:
