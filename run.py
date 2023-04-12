@@ -196,10 +196,11 @@ Please enter {','.join(labeled_alternatives)} or q to quit to main menu""")
             num_correct += 1
             print(f"Your have {points} points.")
             sleep(3)
+            clear()
         else:
             clear()
             print(ascii_game_over)
-            print( f"The answer is {correct_answer!r}, not {answer!r}\n")
+            print( f"The correct answer is {correct_answer!r}, not {answer!r}\n")
             print(f"""\nNicely done {USER_NAME}!
 You scored {points} points by answering {num_correct} questions correctly.\n""")
             game_over()
