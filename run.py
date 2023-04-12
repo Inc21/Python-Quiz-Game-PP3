@@ -23,16 +23,16 @@ ascii_banner = pyfiglet.figlet_format("Python Quiz Game.", font="rectangles")
 
 QUESTIONS =  {
     "How is a code block indicated in Python?": [
-        "Indentation", "Brackets", "Key", "None of the above"
+        "Indentation", "Brackets", "Key", "None of the answers is correct."
     ],
     "What is the maximum length of a Python identifier?": [
         "No fixed length is specified", "32", "16", "128"
     ],
     "Which of the following concepts is not a part of Python?": [
-        "Pointers", "Loops", "Dynamic Typing", "All the above"
+        "Pointers", "Loops", "Dynamic Typing", "All answers are correct."
     ],
     "Which of the following statements are used in Exception Handling in Python?": [
-        "All of the above", "try", "except", "finally"   
+        "All answers are correct", "try", "except", "finally"   
     ],
 }
 
