@@ -1,9 +1,11 @@
 import random
-import pyfiglet
 from string import ascii_lowercase
-from os import system, name
+import os
+from time import sleep
 import gspread
+import pyfiglet
 from google.oauth2.service_account import Credentials
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -15,6 +17,8 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
+USER_NAME = ""
+ascii_banner = pyfiglet.figlet_format("Python Quiz Game.", font="rectangles")
 
 
 QUESTIONS =  {
@@ -32,46 +36,49 @@ QUESTIONS =  {
     ],
 }
 
-ascii_banner = pyfiglet.figlet_format("Welcome to Python Quiz Game!", font="rectangles")
-print(ascii_banner)
-
-USER_NAME = ""
 
 def welcome_page():
     """ 
     Loaded up first when terminal opened, greets user and asks for their name.
     """
     global USER_NAME
+    print(ascii_banner)
     while True:
         try:
             USER_NAME = input("Please enter your name: ")
         except ValueError:
-            print("Name must be 2 - 8 characters long.")
+            print("""\nInvalid entry!
+Name must be 2 - 8 characters long and can't contain 2 or more spaces.\n""")
         if len(USER_NAME) >= 2 and len(USER_NAME) <= 8 and USER_NAME.count("  ") <= 0:
             break
         else:
-            print("Name must be 2 - 8 characters long.")
+            print("""\nInvalid entry!
+Name must be 2 - 8 characters long and can't contain 2 or more spaces.\n""")
     return USER_NAME
+
 
 def clear():
     """
     Function to clear the terminal on windows, mac and linux for a better user experience.
     """
       # for windows
-    if name == 'nt':
-        _ = system('cls')
+    if os.name == 'nt':
+        os.system('cls')
 
     # for mac and linux(here, os.name is 'posix')
     else:
-        _ = system('clear')
+        os.system('clear')
 
 
 def main_menu_page():
     """
      with various options. 
     """
-    print(f"\n Welcome to Python Quiz Game {USER_NAME}! \n")
-    print("Please select one of the fallowing options (type 1, 2, 3 or 4):")
+    ascii_main_menu = pyfiglet.figlet_format("Main Menu.", font="rectangles")
+    # print(f"\n Welcome to Python Quiz Game {USER_NAME}! \n")
+    print(ascii_main_menu)
+    print(f"Welcome to the Python quiz game {USER_NAME}")
+    print("Please select one of the fallowing options (type 1, 2, 3 or 4):\n ")
     print("1) Play the Quiz.")
     print("2) Game Instructions.")
     print("3) High Scores.")
@@ -81,7 +88,7 @@ def main_menu_page():
         try:
             user_option = int(input(f"Select your next move {USER_NAME}: "))
         except ValueError:
-            print("Not a valid option, please enter 1, 2, 3 or 4!")
+            print("\nNot a valid entry! Please enter 1, 2, 3 or 4!\n")
         else:
             break
     if user_option == 1:
@@ -103,7 +110,8 @@ def game_instructions():
     Displays game instructions. Includes option to return to main
     menu by pressing enter key.
     """
-    print("Game instructions\n")
+    ascii_instructions = pyfiglet.figlet_format("Instructions.", font="rectangles")
+    print(ascii_instructions)
     try:
         input("Press Enter to go back to main menu...")
         clear()
@@ -117,7 +125,9 @@ def high_scores():
     Gets to top 15 high scores from google sheets and displays them on the screen.
     Also has option to return to main menu by pressing enter key.
     """
-    print("High Scores from Google Sheets\n")
+    ascii_high_scores = pyfiglet.figlet_format("High Scores.", font="rectangles")
+    print(ascii_high_scores)
+    print("High Scores from Google Sheets.\n")
     try:
         input("Press Enter to go back to main menu...")
         clear()
@@ -129,11 +139,13 @@ def high_scores():
 def game_over():
     """
     This function is loaded when user answers a question wrong and giving them option to play again.
+    Uploads final score to Google sheets.
     """
-    game_over_user = input("Would you like to play again? Type Y for yes or Q to quit: ").lower()
+    game_over_user = input("""Would you like to play again?
+Type Y for yes or Q to go bact to main menu: """).lower()
     if game_over_user == "q":
         clear()
-        exit()
+        main_menu_page()
     elif game_over_user == "y":
         clear()
         run_game()
@@ -146,10 +158,13 @@ def run_game():
     """
     Run the main Quiz
     """
+    ascii_correct = pyfiglet.figlet_format("Correct!", font="rectangles")
+    ascii_game_over = pyfiglet.figlet_format("Game Over!", font="rectangles")
     questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
     points = 0
     num_correct = 0
     for num, (question, alternatives) in enumerate(questions, start=1):
+        print(ascii_banner)
         print(f"\nQuestion {num}:")
         print(f"{question}")
         correct_answer = alternatives[0]
@@ -159,20 +174,25 @@ def run_game():
 
         while (answer_label := input("\nYour selection? ").lower()) not in labeled_alternatives:
             if answer_label == "q":
-                exit()
-            print(f"Not a valid option, please enter {','.join(labeled_alternatives)} or q to quit")
+                clear()
+                main_menu_page()
+            print(f"""\nNot a valid option!
+Please enter {','.join(labeled_alternatives)} or q to quit to main menu""")
 
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:
             clear()
-            print("\nCORRECT!\n")
+            print(ascii_correct)
             points += 10
             num_correct += 1
             print(f"Your have {points} points.")
+            sleep(3)
         else:
+            clear()
+            print(ascii_game_over)
             print( f"The answer is {correct_answer!r}, not {answer!r}\n")
-            print("Game Over")
-            print(f"\nYou scored {points} points by answering {num_correct} questions correctly.\n")
+            print(f"""\nNicely done {USER_NAME}!
+You scored {points} points by answering {num_correct} questions correctly.\n""")
             game_over()
 
 
