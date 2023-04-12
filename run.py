@@ -1,4 +1,5 @@
 import random
+import pyfiglet
 from string import ascii_lowercase
 from os import system, name
 import gspread
@@ -31,20 +32,31 @@ QUESTIONS =  {
     ],
 }
 
+ascii_banner = pyfiglet.figlet_format("Welcome to Python Quiz Game!", font="rectangles")
+print(ascii_banner)
 
 USER_NAME = ""
-while True:
-    try:
-        USER_NAME = input("\nPlease enter your name: ")
-    except ValueError:
-        print("Name must be 2 - 8 characters long.")
-    if len(USER_NAME) >= 2 and len(USER_NAME) <= 8 and USER_NAME.count("  ") <= 0:
-        break
-    else:
-        print("Name must be 2 - 8 characters long.")
 
+def welcome_page():
+    """ 
+    Loaded up first when terminal opened, greets user and asks for their name.
+    """
+    global USER_NAME
+    while True:
+        try:
+            USER_NAME = input("Please enter your name: ")
+        except ValueError:
+            print("Name must be 2 - 8 characters long.")
+        if len(USER_NAME) >= 2 and len(USER_NAME) <= 8 and USER_NAME.count("  ") <= 0:
+            break
+        else:
+            print("Name must be 2 - 8 characters long.")
+    return USER_NAME
 
 def clear():
+    """
+    Function to clear the terminal on windows, mac and linux for a better user experience.
+    """
       # for windows
     if name == 'nt':
         _ = system('cls')
@@ -54,9 +66,9 @@ def clear():
         _ = system('clear')
 
 
-def welcome_page():
+def main_menu_page():
     """
-    Loaded up first when terminal opened with various options. 
+     with various options. 
     """
     print(f"\n Welcome to Python Quiz Game {USER_NAME}! \n")
     print("Please select one of the fallowing options (type 1, 2, 3 or 4):")
@@ -95,7 +107,7 @@ def game_instructions():
     try:
         input("Press Enter to go back to main menu...")
         clear()
-        welcome_page()
+        main_menu_page()
     except SyntaxError:
         pass
 
@@ -105,10 +117,11 @@ def high_scores():
     Gets to top 15 high scores from google sheets and displays them on the screen.
     Also has option to return to main menu by pressing enter key.
     """
-    print("High Scores for Google Sheets\n")
+    print("High Scores from Google Sheets\n")
     try:
         input("Press Enter to go back to main menu...")
-        welcome_page()
+        clear()
+        main_menu_page()
     except SyntaxError:
         pass
 
@@ -168,7 +181,8 @@ def main():
     Run all program functions.
     """
     welcome_page()
-    # run_game()
+    clear()
+    main_menu_page()
 
 
 main()
