@@ -151,7 +151,7 @@ def game_over():
     Uploads final score to Google sheets.
     """
     game_over_user = input("""Would you like to play again?
-Type Y for yes or Q to go bact to main menu: """).lower()
+Type Y for yes or Q to go back to main menu: """).lower()
     if game_over_user == "q":
         clear()
         main_menu_page()
@@ -169,6 +169,7 @@ def run_game():
     """
     ascii_correct = pyfiglet.figlet_format("Correct!", font="rectangles")
     ascii_game_over = pyfiglet.figlet_format("Game Over!", font="rectangles")
+    ascii_winner = pyfiglet.figlet_format("winner winner chicken dinner!", font="rectangles")
     questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
     points = 0
     num_correct = 0
@@ -180,6 +181,16 @@ def run_game():
         labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
         for label, alternative in labeled_alternatives.items():
             print(f" {label}) {alternative}")
+        if num_correct == 25:
+            clear()
+            print(ascii_winner)
+            print(f"""Well done {USER_NAME}!
+You scored {points} points by answering all {num_correct} questions correctly.\n""")
+            print("Another 100 points will be added to your tally")
+            print("for getting them all correctly.\n")
+            points += 100
+            game_over()
+            return
 
         while (answer_label := input("\nYour selection? ").lower()) not in labeled_alternatives:
             if answer_label == "q":
