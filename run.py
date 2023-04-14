@@ -138,13 +138,9 @@ def high_scores():
     """
     ascii_high_scores = pyfiglet.figlet_format("High Scores.", font="rectangles")
     print(ascii_high_scores)
-
     SHEET.sheet1.sort((2, 'des'))
     page = SHEET.sheet1.get_all_values()
-    print(page)
-
     print(tabulate(page[0:10], headers=["NAME", "POINTS"]))
-
     try:
         input("\n-> Press Enter to go back to main menu...")
         clear()
@@ -236,11 +232,10 @@ def update_leaderboard():
     Receives a list of integers to be inserted into a worksheet.
     Update the relevant worksheet with the data provided
     """
-    data = [[USER_NAME, str(POINTS)]]
-    index = 1
-    print(data)
+    data = USER_NAME, POINTS
     print("Updating leaderboard...\n")
-    SHEET.sheet1.append_row(data[1])
+    leaderboard_sheet = SHEET.worksheet("main")
+    leaderboard_sheet.append_row(data)
     print("Leaderboard updated successfully.\n")
 
 
