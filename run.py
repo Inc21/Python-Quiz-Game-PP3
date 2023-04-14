@@ -19,6 +19,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
 USER_NAME = ""
+POINTS = 0
 ascii_banner = pyfiglet.figlet_format("Python Quiz Game.", font="rectangles")
 
 
@@ -65,7 +66,6 @@ def clear():
       # for windows
     if os.name == 'nt':
         os.system('cls')
-
     # for mac and linux(here, os.name is 'posix')
     else:
         os.system('clear')
@@ -141,6 +141,7 @@ def high_scores():
 
     SHEET.sheet1.sort((2, 'des'))
     page = SHEET.sheet1.get_all_values()
+    print(page)
 
     print(tabulate(page[0:10], headers=["NAME", "POINTS"]))
 
@@ -157,28 +158,34 @@ def game_over():
     This function is loaded when user answers a question wrong and giving them option to play again.
     Uploads final score to Google sheets.
     """
-    game_over_user = input("""Would you like to play again?
+    update_leaderboard()
+    while True:
+        try:
+            game_over_user = input("""Would you like to play again?
 Type Y for yes or Q to go back to main menu: """).lower()
-    if game_over_user == "q":
-        clear()
-        main_menu_page()
-    elif game_over_user == "y":
-        clear()
-        run_game()
-    else:
-        print("\nNot a valid option, please enter Y or Q\n")
-        game_over()
+        except ValueError:
+            print("\nNot a valid option, please enter Y or Q\n")
+        if game_over_user == "q":
+            clear()
+            main_menu_page()
+        elif game_over_user == "y":
+            clear()
+            run_game()
+        else:
+            clear()
+            print("\nNot a valid option, please enter Y or Q\n")
 
 
 def run_game():
     """
     Run the main Quiz
     """
+    global POINTS
     ascii_correct = pyfiglet.figlet_format("Correct!", font="rectangles")
     ascii_game_over = pyfiglet.figlet_format("Game Over!", font="rectangles")
     ascii_winner = pyfiglet.figlet_format("winner winner chicken dinner!", font="rectangles")
     questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
-    points = 0
+    POINTS = 0
     num_correct = 0
     for num, (question, alternatives) in enumerate(questions, start=1):
         print(ascii_banner)
@@ -192,10 +199,10 @@ def run_game():
             clear()
             print(ascii_winner)
             print(f"""Well done {USER_NAME}!
-You scored {points} points by answering all {num_correct} questions correctly.\n""")
+You scored {POINTS} points by answering all {num_correct} questions correctly.\n""")
             print("Another 100 points will be added to your tally")
             print("for getting them all correctly.\n")
-            points += 100
+            POINTS += 100
             game_over()
             return
 
@@ -210,18 +217,31 @@ Please enter {','.join(labeled_alternatives)} or q to quit to main menu""")
         if answer == correct_answer:
             clear()
             print(ascii_correct)
-            points += 10
+            POINTS += 10
             num_correct += 1
-            print(f"Your have {points} points.")
-            sleep(3)
+            print(f"Your have {POINTS} points.")
+            sleep(2)
             clear()
         else:
             clear()
             print(ascii_game_over)
             print( f"The correct answer is {correct_answer!r}, not {answer!r}\n")
             print(f"""\nNicely done {USER_NAME}!
-You scored {points} points by answering {num_correct} questions correctly.\n""")
+You scored {POINTS} points by answering {num_correct} questions correctly.\n""")
             game_over()
+
+
+def update_leaderboard():
+    """
+    Receives a list of integers to be inserted into a worksheet.
+    Update the relevant worksheet with the data provided
+    """
+    data = [[USER_NAME, str(POINTS)]]
+    index = 1
+    print(data)
+    print("Updating leaderboard...\n")
+    SHEET.sheet1.append_row(data[1])
+    print("Leaderboard updated successfully.\n")
 
 
 def main():
