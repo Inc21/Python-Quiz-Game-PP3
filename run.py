@@ -5,6 +5,7 @@ from time import sleep
 import gspread
 import pyfiglet
 from google.oauth2.service_account import Credentials
+from tabulate import tabulate
 
 
 SCOPE = [
@@ -54,7 +55,7 @@ Name must be 2 - 8 characters long and can't contain 2 or more spaces.\n""")
         else:
             print("""\nInvalid entry!
 Name must be 2 - 8 characters long and can't contain 2 or more spaces.\n""")
-    return USER_NAME
+    return
 
 
 def clear():
@@ -131,14 +132,19 @@ def game_instructions():
 
 def high_scores():
     """
-    Gets to top 15 high scores from google sheets and displays them on the screen.
+    Gets to top 10 high scores from google sheets and displays them on the screen.
     Also has option to return to main menu by pressing enter key.
     """
     ascii_high_scores = pyfiglet.figlet_format("High Scores.", font="rectangles")
     print(ascii_high_scores)
-    print("High Scores from Google Sheets.\n")
+
+    page = SHEET.sheet1.get_all_values()
+    
+
+    print(tabulate(page[0:10], headers=["NAME", "POINTS"]))
+
     try:
-        input("-> Press Enter to go back to main menu...")
+        input("\n-> Press Enter to go back to main menu...")
         clear()
         main_menu_page()
     except SyntaxError:
