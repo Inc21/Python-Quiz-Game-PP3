@@ -133,13 +133,14 @@ def game_instructions():
 def high_scores():
     """
     Gets to top 10 high scores from google sheets and displays them on the screen.
+    Using tabulate prints top 10 results. Sorts results using sort(). 
     Also has option to return to main menu by pressing enter key.
     """
     ascii_high_scores = pyfiglet.figlet_format("High Scores.", font="rectangles")
     print(ascii_high_scores)
 
+    SHEET.sheet1.sort((2, 'des'))
     page = SHEET.sheet1.get_all_values()
-    
 
     print(tabulate(page[0:10], headers=["NAME", "POINTS"]))
 
