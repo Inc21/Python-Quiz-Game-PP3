@@ -115,7 +115,7 @@ def game_instructions():
     print(ascii_instructions)
     print("To play the game, all you have to do is answer all 25 questions correctly.")
     print("Simple really isn't it?\n")
-    print("To select your answer, just enter corresponding letter and hit enter.")
+    print("To select your answer, enter corresponding letter and hit enter.")
     print("Every correct answer is worth 10 points.\n")
     print("Get question wrong and your game is over.")
     print("Your points are recorded and uploaded to the database.\n")
@@ -154,7 +154,6 @@ def game_over():
     This function is loaded when user answers a question wrong and giving them option to play again.
     Uploads final score to Google sheets.
     """
-    update_leaderboard()
     while True:
         try:
             game_over_user = input("""Would you like to play again?
@@ -218,12 +217,19 @@ Please enter {','.join(labeled_alternatives)} or q to quit to main menu""")
             print(f"Your have {POINTS} points.")
             sleep(2)
             clear()
+        elif answer != correct_answer and num_correct == 0:
+            clear()
+            print(ascii_game_over)
+            print(f"\nOops {USER_NAME}!")
+            print("You scored no points this round.\n")
+            game_over()
         else:
             clear()
             print(ascii_game_over)
             print( f"The correct answer is {correct_answer!r}, not {answer!r}\n")
             print(f"""\nNicely done {USER_NAME}!
 You scored {POINTS} points by answering {num_correct} questions correctly.\n""")
+            update_leaderboard()
             game_over()
 
 
