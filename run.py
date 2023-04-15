@@ -207,7 +207,7 @@ def run_game():
     global POINTS
     ascii_correct = pyfiglet.figlet_format("Correct!", font="rectangles")
     ascii_game_over = pyfiglet.figlet_format("Game Over!", font="rectangles")
-    ascii_winner = pyfiglet.figlet_format("winner winner chicken dinner!", font="rectangles")
+    ascii_winner = pyfiglet.figlet_format("Winner Winner!", font="rectangles")
     questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
     POINTS = 0
     num_correct = 0
@@ -222,11 +222,12 @@ def run_game():
         if num_correct == 25:
             clear()
             print(ascii_winner)
-            print(f"""Well done {USER_NAME}!
+            print(f"""Well done {USER_NAME} you great Python master!
 You scored {POINTS} points by answering all {num_correct} questions correctly.\n""")
-            print("Another 100 points will be added to your tally")
+            print("Another 250 points will be added to your tally")
             print("for getting them all correctly.\n")
-            POINTS += 100
+            POINTS += 250
+            update_leaderboard()
             game_over()
             return
 
@@ -264,8 +265,7 @@ You scored {POINTS} points by answering {num_correct} questions correctly.\n""")
 
 def update_leaderboard():
     """
-    Receives a list of integers to be inserted into a worksheet.
-    Update the relevant worksheet with the data provided
+    Update the worksheet with the user name and final points.
     """
     data = USER_NAME, POINTS
     print("Updating leaderboard...\n")
