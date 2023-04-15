@@ -1,11 +1,16 @@
 import random
 from string import ascii_lowercase
+import pathlib
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
 import os
 from time import sleep
-import gspread
-import pyfiglet
-from google.oauth2.service_account import Credentials
 from tabulate import tabulate
+from google.oauth2.service_account import Credentials
+import pyfiglet
+import gspread
 
 
 SCOPE = [
@@ -20,57 +25,13 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
 USER_NAME = ""
 POINTS = 0
+QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
+QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
 ascii_banner = pyfiglet.figlet_format("Python Quiz Game.", font="rectangles")
 
 
-QUESTIONS =  {
-    "How is a code block indicated in Python?": [
-        "Indentation", "Brackets", "Key", "None of the answers is correct."
-    ],
-    "What is the maximum length of a Python identifier?": [
-        "No fixed length is specified.", "32", "16", "128"
-    ],
-    "Which of the following concepts is not a part of Python?": [
-        "Pointers", "Loops", "Dynamic Typing", "All answers are correct."
-    ],
-    "Which of the following statements are used in Exception Handling in Python?": [
-        "All answers are correct.", "try", "except", "finally"   
-    ],
-    "Which of the following types of loops are not supported in Python?": [
-      "do-while", "for", "while", "None of the answers is correct."  
-    ],
-    "Which of the following functions converts date to corresponding time in Python?": [
-        "strptime()", "strftime()", "None of the answers is correct.", "sometime()"
-    ],
-    "As what datatype are the *args stored, when passed into a function?": [
-        "Tuple", "List", "None of the answers is correct.", "Dictionary"
-    ],
-    "As what datatype are the *kwargs stored, when passed into a function?": [
-        "Dictionary", "List", "None of the answers is correct.", "Tuple"
-    ],
-    "What keyword is used in Python to raise exceptions?": [
-        "raise", "try", "goto", "except"
-    ],
-    "Which of the following is not a valid set operation in python?": [
-        "None of the answers is correct.", "Union", "Intersection", "Difference"
-    ],
-    "Which of the following are valid escape sequences in Python?": [
-        "All answers are correct.", "\n", "\t", "\\"
-    ],
-    "Which of the following modules need to be imported to handle date time computations in Py?": [
-        "datetime", "date", "time", "timedate"
-    ],
-    "In which language is Python written?": [
-        "C", "C++", "Java", "None of the answers is correct."
-    ],
-    "What will be the result of the following expression in Python “2 ** 3 + 5 ** 2”?": [
-        "33", "65536", "169", "None of the answers is correct."
-    ],
-}
-
-
 def welcome_page():
-    """ 
+    """
     Loaded up first when terminal opened, greets user and asks for their name.
     """
     global USER_NAME
@@ -86,14 +47,14 @@ Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""")
         else:
             print("""\nInvalid entry!
 Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""")
-    return
+    # return
 
 
 def clear():
     """
     Function to clear the terminal on windows, mac and linux for a better user experience.
     """
-      # for windows
+    # for windows
     if os.name == 'nt':
         os.system('cls')
     # for mac and linux(here, os.name is 'posix')
@@ -103,7 +64,7 @@ def clear():
 
 def main_menu_page():
     """
-     with various options. 
+     with various options.
     """
     ascii_main_menu = pyfiglet.figlet_format("Main Menu.", font="rectangles")
     print(ascii_main_menu)
@@ -162,7 +123,7 @@ def game_instructions():
 def high_scores():
     """
     Gets to top 10 high scores from google sheets and displays them on the screen.
-    Using tabulate prints top 10 results. Sorts results using sort(). 
+    Using tabulate prints top 10 results. Sorts results using sort().
     Also has option to return to main menu by pressing enter key.
     """
     ascii_high_scores = pyfiglet.figlet_format("High Scores.", font="rectangles")
@@ -256,7 +217,7 @@ Please enter {','.join(labeled_alternatives)} or Q to quit to main menu""")
         else:
             clear()
             print(ascii_game_over)
-            print( f"The correct answer is {correct_answer!r}, not {answer!r}\n")
+            print(f"The correct answer is {correct_answer!r}, not {answer!r}\n")
             print(f"""\nNicely done {USER_NAME}!
 You scored {POINTS} points by answering {num_correct} questions correctly.\n""")
             update_leaderboard()
