@@ -28,13 +28,43 @@ QUESTIONS =  {
         "Indentation", "Brackets", "Key", "None of the answers is correct."
     ],
     "What is the maximum length of a Python identifier?": [
-        "No fixed length is specified", "32", "16", "128"
+        "No fixed length is specified.", "32", "16", "128"
     ],
     "Which of the following concepts is not a part of Python?": [
         "Pointers", "Loops", "Dynamic Typing", "All answers are correct."
     ],
     "Which of the following statements are used in Exception Handling in Python?": [
-        "All answers are correct", "try", "except", "finally"   
+        "All answers are correct.", "try", "except", "finally"   
+    ],
+    "Which of the following types of loops are not supported in Python?": [
+      "do-while", "for", "while", "None of the answers is correct."  
+    ],
+    "Which of the following functions converts date to corresponding time in Python?": [
+        "strptime()", "strftime()", "None of the answers is correct.", "sometime()"
+    ],
+    "As what datatype are the *args stored, when passed into a function?": [
+        "Tuple", "List", "None of the answers is correct.", "Dictionary"
+    ],
+    "As what datatype are the *kwargs stored, when passed into a function?": [
+        "Dictionary", "List", "None of the answers is correct.", "Tuple"
+    ],
+    "What keyword is used in Python to raise exceptions?": [
+        "raise", "try", "goto", "except"
+    ],
+    "Which of the following is not a valid set operation in python?": [
+        "None of the answers is correct.", "Union", "Intersection", "Difference"
+    ],
+    "Which of the following are valid escape sequences in Python?": [
+        "All answers are correct.", "\n", "\t", "\\"
+    ],
+    "Which of the following modules need to be imported to handle date time computations in Py?": [
+        "datetime", "date", "time", "timedate"
+    ],
+    "In which language is Python written?": [
+        "C", "C++", "Java", "None of the answers is correct."
+    ],
+    "What will be the result of the following expression in Python “2 ** 3 + 5 ** 2”?": [
+        "33", "65536", "169", "None of the answers is correct."
     ],
 }
 
@@ -50,12 +80,12 @@ def welcome_page():
             USER_NAME = input("Please enter your name: ")
         except ValueError:
             print("""\nInvalid entry!
-Name must be 2 - 8 characters long and can't contain 2 or more spaces.\n""")
-        if len(USER_NAME) >= 2 and len(USER_NAME) <= 8 and USER_NAME.count("  ") <= 0:
+Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""")
+        if len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and USER_NAME.count("  ") <= 0:
             break
         else:
             print("""\nInvalid entry!
-Name must be 2 - 8 characters long and can't contain 2 or more spaces.\n""")
+Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""")
     return
 
 
@@ -76,7 +106,6 @@ def main_menu_page():
      with various options. 
     """
     ascii_main_menu = pyfiglet.figlet_format("Main Menu.", font="rectangles")
-    # print(f"\n Welcome to Python Quiz Game {USER_NAME}! \n")
     print(ascii_main_menu)
     print(f"Welcome to the Python quiz game {USER_NAME}")
     print("Please select one of the fallowing options (type 1, 2, 3 or 4):\n ")
@@ -119,7 +148,7 @@ def game_instructions():
     print("Every correct answer is worth 10 points.\n")
     print("Get question wrong and your game is over.")
     print("Your points are recorded and uploaded to the database.\n")
-    print("Hopefully you did well enough to be in top 15 and see your name on the leaderboard.\n")
+    print("Hopefully you did well enough to be in top 10 and see your name on the leaderboard.\n")
     print("To end the game during play, you can enter letter Q to return to main menu")
     print("but points you worked so hard to get are lost forever.\n")
     try:
@@ -206,7 +235,7 @@ You scored {POINTS} points by answering all {num_correct} questions correctly.\n
                 clear()
                 main_menu_page()
             print(f"""\nNot a valid option!
-Please enter {','.join(labeled_alternatives)} or q to quit to main menu""")
+Please enter {','.join(labeled_alternatives)} or Q to quit to main menu""")
 
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:

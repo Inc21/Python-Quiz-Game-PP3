@@ -23,5 +23,8 @@
    "files.autoSave": "afterDelay",
    "workbench.colorTheme": "Visual Studio Dark",
 "editor.defaultFormatter": "HookyQR.beautify",
-"python.linting.mypyEnabled": true
+"python.linting.mypyEnabled": true,
+"cSpell.words": [
+   "timedate"
+]
 }
