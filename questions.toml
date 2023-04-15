@@ -38,60 +38,20 @@
     "None of the answers is correct.", "Union", "Intersection", "Difference"
     ]
 
-"Which of the following are valid escape sequences in Python?" = [
-    "All answers are correct.", "'\\n'", "'\\t'", "'\\\\'"
-    ]
-
-"Which of the following modules need to be imported to handle date time computations in Py?" = [
-    "datetime", "date", "time", "timedate"
-    ]
-
 "In which language is Python written?" = [
     "C", "C++", "Java", "None of the answers is correct."
-    ]
-
-"What will be the result of the following expression in Python “2 ** 3 + 5 ** 2”?" = [
-    "33", "65536", "169", "None of the answers is correct."
-    ]
-
-"Which of the following is false statement in python?" = [
-    "None of the answers is correct.", "int(144)==144", "int('144')==144", "int(144.0)==144"
-    ]
-
-"Choose the correct syntax for reading from a text file stored in ‘‘c:\scores.txt’’ ?" = [
-    "Infile = open(''c:\\scores.txt'', ''r'')", "Infile = open(''c:\scores.txt'',''r'')", "Infile = open(file=''c:\\\scores.txt'', ''r'')", "Infile = open.file(''c:\\scores.txt'',''r'')"
-    ]
-
-"Which type of Programming does Python support?" = [
-    "All answers are correct.", "functional programming", "structured programming", "object-oriented programming"
     ]
 
 "Is Python case sensitive when dealing with identifiers?" = [
     "yes", "no", "machine dependent", "None of the answers is correct."
     ]
 
-"Which of the following is the correct extension of the Python file?" = [
-    ".py", ".pl", ".p", ".python"
-    ]
-
 "Which keyword is used for function in Python language?" = [
     "def", "Function", "Fun", "Define"
     ]
 
-"Python supports the creation of anonymous functions at runtime, using a construct called?" = [
-    "lambda", "pi", "anonymous", "None of the answers is correct."
-    ]
-
-"What does pip stand for python?" = [
-    "Preferred Installer Program", "Pip Installs Python", "Pip Installs Packages", "All answers are correct."
-    ]
-
 "Which of the following is not a core data type in Python programming?" = [
     "Class", "Tuples", "Lists", "Dictionary"
-    ]
-
-"Which of these is the definition for packages in Python?" = [
-    "A folder of python modules", "A set of programs making use of Python modules", "A number of files containing Python definitions and statements", "A set of main modules"
     ]
 
 "Which one of the following is not a keyword in Python language?" = [
@@ -101,3 +61,43 @@
 "Which module in the python standard library parses options received from the command line?" = [
     "getopt", "getarg", "main", "os"
     ]
+
+"Which of the following are valid escape sequences in Python?" = [
+    "All answers are correct.", "'\\n'", "'\\t'", "'\\\\'"
+    ]
+
+"Which of the following is the correct extension of the Python file?" = [
+    ".py", ".pl", ".p", ".python"
+    ]
+
+"Which of the following is false statement in python?" = [
+    "None of the answers is correct.", "int(144)==144", "int('144')==144", "int(144.0)==144"
+    ]
+
+    "Python supports the creation of anonymous functions at runtime, using a construct called?" = [
+    "lambda", "pi", "anonymous", "None of the answers is correct."
+    ]
+
+"What does pip stand for python?" = [
+    "Preferred Installer Program", "Pip Installs Python", "Pip Installs Packages", "All answers are correct."
+    ]
+
+"Which of the following modules need to be imported to handle date time computations in Py?" = [
+    "datetime", "date", "time", "timedate"
+    ]
+
+"Which of these is the definition for packages in Python?" = [
+    "A folder of python modules", "A set of programs making use of Python modules", "A number of files containing Python definitions and statements", "A set of main modules"
+    ]
+
+"Which type of Programming does Python support?" = [
+    "All answers are correct.", "functional programming", "structured programming", "object-oriented programming"
+    ]
+
+"Which of the following statements is used to create an empty set in Python?" = [
+    "set()", "()", "[]", "{}"
+]
+
+"What is output of print(math.pow(3, 2))?" = [
+    "9.0", "None", "9", "6"
+]

@@ -213,6 +213,7 @@ Please enter {','.join(labeled_alternatives)} or Q to quit to main menu""")
             clear()
             print(ascii_game_over)
             print(f"\nOops {USER_NAME}!")
+            print(f"The correct answer is {correct_answer!r}, not {answer!r}")
             print("You scored no points this round.\n")
             game_over()
         else:
