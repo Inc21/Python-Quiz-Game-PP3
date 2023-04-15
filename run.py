@@ -163,7 +163,8 @@ Type Y for yes or Q to go back to main menu: """).lower()
 
 def run_game():
     """
-    Run the main Quiz
+    Run the main Quiz Game.
+    
     """
     global POINTS
     ascii_correct = pyfiglet.figlet_format("Correct!", font="rectangles")
@@ -226,7 +227,7 @@ You scored {POINTS} points by answering {num_correct} questions correctly.\n""")
 
 def update_leaderboard():
     """
-    Update the worksheet with the user name and final points.
+    Update the worksheet with the user name and their final points.
     """
     data = USER_NAME, POINTS
     print("Updating leaderboard...\n")

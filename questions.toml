@@ -54,26 +54,50 @@
     "33", "65536", "169", "None of the answers is correct."
     ]
 
-"" = [
-    "", "", "", "None of the answers is correct."
+"Which of the following is false statement in python?" = [
+    "None of the answers is correct.", "int(144)==144", "int('144')==144", "int(144.0)==144"
     ]
 
-"" = [
-    "", "", "", "None of the answers is correct."
+"Choose the correct syntax for reading from a text file stored in ‘‘c:\scores.txt’’ ?" = [
+    "Infile = open(''c:\\scores.txt'', ''r'')", "Infile = open(''c:\scores.txt'',''r'')", "Infile = open(file=''c:\\\scores.txt'', ''r'')", "Infile = open.file(''c:\\scores.txt'',''r'')"
     ]
 
-"" = [
-    "", "", "", "None of the answers is correct."
+"Which type of Programming does Python support?" = [
+    "All answers are correct.", "functional programming", "structured programming", "object-oriented programming"
     ]
 
-"" = [
-    "", "", "", "None of the answers is correct."
+"Is Python case sensitive when dealing with identifiers?" = [
+    "yes", "no", "machine dependent", "None of the answers is correct."
     ]
 
-"" = [
-    "", "", "", "None of the answers is correct."
+"Which of the following is the correct extension of the Python file?" = [
+    ".py", ".pl", ".p", ".python"
     ]
 
-"" = [
-    "", "", "", "None of the answers is correct."
+"Which keyword is used for function in Python language?" = [
+    "def", "Function", "Fun", "Define"
+    ]
+
+"Python supports the creation of anonymous functions at runtime, using a construct called?" = [
+    "lambda", "pi", "anonymous", "None of the answers is correct."
+    ]
+
+"What does pip stand for python?" = [
+    "Preferred Installer Program", "Pip Installs Python", "Pip Installs Packages", "All answers are correct."
+    ]
+
+"Which of the following is not a core data type in Python programming?" = [
+    "Class", "Tuples", "Lists", "Dictionary"
+    ]
+
+"Which of these is the definition for packages in Python?" = [
+    "A folder of python modules", "A set of programs making use of Python modules", "A number of files containing Python definitions and statements", "A set of main modules"
+    ]
+
+"Which one of the following is not a keyword in Python language?" = [
+    "eval", "pass", "assert", "nonlocal"
+    ]
+
+"Which module in the python standard library parses options received from the command line?" = [
+    "getopt", "getarg", "main", "os"
     ]
