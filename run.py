@@ -11,13 +11,21 @@ from tabulate import tabulate
 from google.oauth2.service_account import Credentials
 import pyfiglet
 import gspread
-
+from colored import fg, attr
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
 ]
+
+# Colour variables
+GR = fg("dark_olive_green_2")
+RD = fg("red")
+GD = fg("gold_3a")
+YL = fg("yellow")
+BL = fg("blue")
+R = attr("reset")
 
 # Constant variables.
 CREDS = Credentials.from_service_account_file('creds.json')
@@ -26,7 +34,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
-ASCII_BANNER = pyfiglet.figlet_format("Python Quiz Game.", font="rectangles")
+ASCII_BANNER = GR + pyfiglet.figlet_format("Python Quiz Game.", font="rectangles") + R
 
 # Global variables that will be defined in functions.
 USER_NAME = ""
@@ -41,17 +49,18 @@ def welcome_page():
     print(ASCII_BANNER)
     while True:
         try:
-            USER_NAME = input("Please enter your name: ")
+            USER_NAME = input(YL + "Please enter your name: " + R)
         except ValueError:
-            print("""\nInvalid entry!
-Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""")
+            print(RD + """\nInvalid entry!
+Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""" +
+R)
         if (len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and
                 USER_NAME.count("  ") <= 0):
             break
         else:
-            print("""\nInvalid entry!
-Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""")
-    # return
+            print(RD + """\nInvalid entry!
+Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""" +
+R)
 
 
 def clear():
@@ -71,9 +80,9 @@ def main_menu_page():
     """
      with various options.
     """
-    ascii_main_menu = pyfiglet.figlet_format("Main Menu.", font="rectangles")
+    ascii_main_menu = GR + pyfiglet.figlet_format("Main Menu.", font="rectangles") + R
     print(ascii_main_menu)
-    print(f"Welcome to the Python quiz game {USER_NAME}")
+    print(f"Welcome to the {GR}Python quiz game{R} {USER_NAME}")
     print("Please select one of the fallowing options (type 1, 2, 3 or 4):\n ")
     print("1) Play the Quiz.")
     print("2) Game Instructions.")
@@ -82,9 +91,9 @@ def main_menu_page():
 
     while True:
         try:
-            user_option = int(input(f"Select your next move {USER_NAME}: "))
+            user_option = int(input(f"{YL}Select your next move {USER_NAME}: {R}"))
         except ValueError:
-            print("\nNot a valid entry! Please enter 1, 2, 3 or 4!\n")
+            print(f"\n{RD}Not a valid entry! Please enter 1, 2, 3 or 4!{R}\n")
         if user_option == 1:
             clear()
             run_game()
@@ -98,7 +107,7 @@ def main_menu_page():
             clear()
             exit()
         else:
-            print("\nNot a valid entry! Please enter 1, 2, 3 or 4!")
+            print(f"\n{RD}Not a valid entry! Please enter 1, 2, 3 or 4!{R}")
 
 
 def game_instructions():
@@ -106,8 +115,7 @@ def game_instructions():
     Displays game instructions. Includes option to return to main
     menu by pressing enter key.
     """
-    ascii_instructions = pyfiglet.figlet_format("Instructions.",
-                                                font="rectangles")
+    ascii_instructions = GR + pyfiglet.figlet_format("Instructions.", font="rectangles") + R
     print(ascii_instructions)
     print("To play the game, all you have to do is answer all\
  25 questions correctly.")
@@ -122,7 +130,7 @@ def game_instructions():
  main menu")
     print("but points you worked so hard to get are lost forever.\n")
     try:
-        input(" -> Press Enter to go back to main menu...")
+        input(f" {YL}-> Press Enter to go back to main menu...{R}")
         clear()
         main_menu_page()
     except SyntaxError:
@@ -135,7 +143,7 @@ def high_scores():
     the screen. Using tabulate prints top 10 results. Sorts results
     using sort(). Also has option to return to main menu by pressing enter key.
     """
-    ascii_hi_scores = pyfiglet.figlet_format("High Scores.", font="rectangles")
+    ascii_hi_scores = GR + pyfiglet.figlet_format("High Scores.", font="rectangles") + R
     print(ascii_hi_scores)
     SHEET.sheet1.sort((2, 'des'))
     page = SHEET.sheet1.get_all_values()
@@ -177,9 +185,9 @@ def run_game():
     Displays next question if answer correct otherwise, game over.
     """
     global POINTS
-    ascii_correct = pyfiglet.figlet_format("Correct!", font="rectangles")
-    ascii_game_over = pyfiglet.figlet_format("Game Over!", font="rectangles")
-    ascii_winner = pyfiglet.figlet_format("Winner Winner!", font="rectangles")
+    ascii_correct = GR + pyfiglet.figlet_format("Correct!", font="rectangles") + R
+    ascii_game_over = RD + pyfiglet.figlet_format("Game Over!", font="rectangles") + R
+    ascii_winner = GD + pyfiglet.figlet_format("Winner Winner!", font="rectangles") + R
     questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
     POINTS = 0
     num_correct = 0
