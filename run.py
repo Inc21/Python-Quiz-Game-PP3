@@ -19,15 +19,18 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
 ]
 
+# Constant variables.
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
-USER_NAME = ""
-POINTS = 0
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
-ascii_banner = pyfiglet.figlet_format("Python Quiz Game.", font="rectangles")
+ASCII_BANNER = pyfiglet.figlet_format("Python Quiz Game.", font="rectangles")
+
+# Global variables that will be defined in functions.
+USER_NAME = ""
+POINTS = 0
 
 
 def welcome_page():
@@ -35,14 +38,15 @@ def welcome_page():
     Loaded up first when terminal opened, greets user and asks for their name.
     """
     global USER_NAME
-    print(ascii_banner)
+    print(ASCII_BANNER)
     while True:
         try:
             USER_NAME = input("Please enter your name: ")
         except ValueError:
             print("""\nInvalid entry!
 Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""")
-        if len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and USER_NAME.count("  ") <= 0:
+        if (len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and
+                USER_NAME.count("  ") <= 0):
             break
         else:
             print("""\nInvalid entry!
@@ -52,7 +56,8 @@ Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""")
 
 def clear():
     """
-    Function to clear the terminal on windows, mac and linux for a better user experience.
+    Function to clear the terminal on windows, mac and
+    linux for a better user experience.
     """
     # for windows
     if os.name == 'nt':
@@ -80,20 +85,20 @@ def main_menu_page():
             user_option = int(input(f"Select your next move {USER_NAME}: "))
         except ValueError:
             print("\nNot a valid entry! Please enter 1, 2, 3 or 4!\n")
+        if user_option == 1:
+            clear()
+            run_game()
+        elif user_option == 2:
+            clear()
+            game_instructions()
+        elif user_option == 3:
+            clear()
+            high_scores()
+        elif user_option == 4:
+            clear()
+            exit()
         else:
-            break
-    if user_option == 1:
-        clear()
-        run_game()
-    elif user_option == 2:
-        clear()
-        game_instructions()
-    elif user_option == 3:
-        clear()
-        high_scores()
-    elif user_option == 4:
-        clear()
-        exit()
+            print("\nNot a valid entry! Please enter 1, 2, 3 or 4!")
 
 
 def game_instructions():
@@ -101,16 +106,20 @@ def game_instructions():
     Displays game instructions. Includes option to return to main
     menu by pressing enter key.
     """
-    ascii_instructions = pyfiglet.figlet_format("Instructions.", font="rectangles")
+    ascii_instructions = pyfiglet.figlet_format("Instructions.",
+                                                font="rectangles")
     print(ascii_instructions)
-    print("To play the game, all you have to do is answer all 25 questions correctly.")
+    print("To play the game, all you have to do is answer all\
+ 25 questions correctly.")
     print("Simple really isn't it?\n")
     print("To select your answer, enter corresponding letter and hit enter.")
     print("Every correct answer is worth 10 points.\n")
     print("Get question wrong and your game is over.")
     print("Your points are recorded and uploaded to the database.\n")
-    print("Hopefully you did well enough to be in top 10 and see your name on the leaderboard.\n")
-    print("To end the game during play, you can enter letter Q to return to main menu")
+    print("Hopefully you did well enough to be in top 10 and see your name on\
+ the leaderboard.\n")
+    print("To end the game during play, you can enter letter Q to return to\
+ main menu")
     print("but points you worked so hard to get are lost forever.\n")
     try:
         input(" -> Press Enter to go back to main menu...")
@@ -122,12 +131,12 @@ def game_instructions():
 
 def high_scores():
     """
-    Gets to top 10 high scores from google sheets and displays them on the screen.
-    Using tabulate prints top 10 results. Sorts results using sort().
-    Also has option to return to main menu by pressing enter key.
+    Gets to top 10 high scores from google sheets and displays them on
+    the screen. Using tabulate prints top 10 results. Sorts results
+    using sort(). Also has option to return to main menu by pressing enter key.
     """
-    ascii_high_scores = pyfiglet.figlet_format("High Scores.", font="rectangles")
-    print(ascii_high_scores)
+    ascii_hi_scores = pyfiglet.figlet_format("High Scores.", font="rectangles")
+    print(ascii_hi_scores)
     SHEET.sheet1.sort((2, 'des'))
     page = SHEET.sheet1.get_all_values()
     print(tabulate(page[0:10], headers=["NAME", "POINTS"]))
@@ -141,8 +150,8 @@ def high_scores():
 
 def game_over():
     """
-    This function is loaded when user answers a question wrong and giving them option to play again.
-    Uploads final score to Google sheets.
+    This function is loaded when user answers a question wrong and giving them
+    option to play again. Uploads final score to Google sheets.
     """
     while True:
         try:
@@ -163,8 +172,9 @@ Type Y for yes or Q to go back to main menu: """).lower()
 
 def run_game():
     """
-    Run the main Quiz Game.
-    
+    Run the main Quiz Game. Get question from question.toml.
+    Checks user input (correct answer index 0).
+    Displays next question if answer correct otherwise, game over.
     """
     global POINTS
     ascii_correct = pyfiglet.figlet_format("Correct!", font="rectangles")
@@ -174,7 +184,7 @@ def run_game():
     POINTS = 0
     num_correct = 0
     for num, (question, alternatives) in enumerate(questions, start=1):
-        print(ascii_banner)
+        print(ASCII_BANNER)
         print(f"\nQuestion {num}:")
         print(f"{question}")
         correct_answer = alternatives[0]
@@ -184,8 +194,9 @@ def run_game():
         if num_correct == 25:
             clear()
             print(ascii_winner)
-            print(f"""Well done {USER_NAME} you great Python master!
-You scored {POINTS} points by answering all {num_correct} questions correctly.\n""")
+            print(f"Well done {USER_NAME} you great Python master!")
+            print(f"You scored {POINTS} points by answering all {num_correct}\
+ questions correctly.\n")
             print("Another 250 points will be added to your tally")
             print("for getting them all correctly.\n")
             POINTS += 250
@@ -193,7 +204,8 @@ You scored {POINTS} points by answering all {num_correct} questions correctly.\n
             game_over()
             return
 
-        while (answer_label := input("\nYour selection? ").lower()) not in labeled_alternatives:
+        while ((answer_label := input("\nYour selection? ").lower()) not in
+               labeled_alternatives):
             if answer_label == "q":
                 clear()
                 main_menu_page()
@@ -219,9 +231,11 @@ Please enter {','.join(labeled_alternatives)} or Q to quit to main menu""")
         else:
             clear()
             print(ascii_game_over)
-            print(f"The correct answer is {correct_answer!r}, not {answer!r}\n")
-            print(f"""\nNicely done {USER_NAME}!
-You scored {POINTS} points by answering {num_correct} questions correctly.\n""")
+            print(f"""The correct answer is {correct_answer!r},
+not {answer!r}\n""")
+            print(f"\nNicely done {USER_NAME}!")
+            print(f"""You scored {POINTS} points by answering {num_correct}
+questions correctly.\n""")
             update_leaderboard()
             game_over()
 
