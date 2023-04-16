@@ -21,10 +21,10 @@ SCOPE = [
 
 # Colour variables
 GR = fg("dark_olive_green_2")
-RD = fg("red")
+RD = fg("light_red")
 GD = fg("gold_3a")
 YL = fg("yellow")
-BL = fg("blue")
+BL = fg("turquoise_2")
 R = attr("reset")
 
 # Constant variables.
@@ -34,7 +34,8 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
-ASCII_BANNER = GR + pyfiglet.figlet_format("Python Quiz Game.", font="rectangles") + R
+ASCII_BANNER = (GR + pyfiglet.figlet_format
+                ("Python Quiz Game.", font="rectangles") + R)
 
 # Global variables that will be defined in functions.
 USER_NAME = ""
@@ -51,16 +52,14 @@ def welcome_page():
         try:
             USER_NAME = input(YL + "Please enter your name: " + R)
         except ValueError:
-            print(RD + """\nInvalid entry!
-Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""" +
-R)
+            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters\
+ long and can't contain 2 or more spaces.{R}\n")
         if (len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and
                 USER_NAME.count("  ") <= 0):
             break
         else:
-            print(RD + """\nInvalid entry!
-Name must be 2 - 10 characters long and can't contain 2 or more spaces.\n""" +
-R)
+            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters\
+ long and can't contain 2 or more spaces.{R}\n")
 
 
 def clear():
@@ -80,18 +79,18 @@ def main_menu_page():
     """
      with various options.
     """
-    ascii_main_menu = GR + pyfiglet.figlet_format("Main Menu.", font="rectangles") + R
-    print(ascii_main_menu)
-    print(f"Welcome to the {GR}Python quiz game{R} {USER_NAME}")
-    print("Please select one of the fallowing options (type 1, 2, 3 or 4):\n ")
-    print("1) Play the Quiz.")
-    print("2) Game Instructions.")
-    print("3) High Scores.")
-    print("4) Exit Game.\n")
+    print(ASCII_BANNER)
+    print(f"Welcome {BL + USER_NAME + R}")
+    print(f"Please select {YL}1, 2, 3 or 4{R} from the Main Menu below.\n ")
+    print(f"{YL}1){R} Play the Quiz.")
+    print(f"{YL}2){R} Game Instructions.")
+    print(f"{YL}3){R} High Scores.")
+    print(f"{YL}4){R} Exit Game.\n")
 
     while True:
         try:
-            user_option = int(input(f"{YL}Select your next move {USER_NAME}: {R}"))
+            user_option = (int(input(f"{YL}Whats's your next move\
+ {BL + USER_NAME}: {R}")))
         except ValueError:
             print(f"\n{RD}Not a valid entry! Please enter 1, 2, 3 or 4!{R}\n")
         if user_option == 1:
@@ -115,7 +114,8 @@ def game_instructions():
     Displays game instructions. Includes option to return to main
     menu by pressing enter key.
     """
-    ascii_instructions = GR + pyfiglet.figlet_format("Instructions.", font="rectangles") + R
+    ascii_instructions = (GR + pyfiglet.figlet_format
+                          ("Instructions.", font="rectangles") + R)
     print(ascii_instructions)
     print("To play the game, all you have to do is answer all\
  25 questions correctly.")
@@ -143,13 +143,14 @@ def high_scores():
     the screen. Using tabulate prints top 10 results. Sorts results
     using sort(). Also has option to return to main menu by pressing enter key.
     """
-    ascii_hi_scores = GR + pyfiglet.figlet_format("High Scores.", font="rectangles") + R
+    ascii_hi_scores = (GR + pyfiglet.figlet_format
+                       ("High Scores.", font="rectangles") + R)
     print(ascii_hi_scores)
     SHEET.sheet1.sort((2, 'des'))
     page = SHEET.sheet1.get_all_values()
     print(tabulate(page[0:10], headers=["NAME", "POINTS"]))
     try:
-        input("\n-> Press Enter to go back to main menu...")
+        input(F"\n{YL}-> Press Enter to go back to main menu...{R}")
         clear()
         main_menu_page()
     except SyntaxError:
@@ -163,10 +164,10 @@ def game_over():
     """
     while True:
         try:
-            game_over_user = input("""Would you like to play again?
-Type Y for yes or Q to go back to main menu: """).lower()
+            game_over_user = input(F"""{YL}Would you like to play again?
+Type Y for yes or Q to go back to main menu: {R}""").lower()
         except ValueError:
-            print("\nNot a valid option, please enter Y or Q\n")
+            print(F"\n{RD}Not a valid option, please enter Y or Q{R}\n")
         if game_over_user == "q":
             clear()
             main_menu_page()
@@ -175,7 +176,7 @@ Type Y for yes or Q to go back to main menu: """).lower()
             run_game()
         else:
             clear()
-            print("\nNot a valid option, please enter Y or Q\n")
+            print(F"\n{RD}Not a valid option, please enter Y or Q{R}\n")
 
 
 def run_game():
@@ -185,15 +186,18 @@ def run_game():
     Displays next question if answer correct otherwise, game over.
     """
     global POINTS
-    ascii_correct = GR + pyfiglet.figlet_format("Correct!", font="rectangles") + R
-    ascii_game_over = RD + pyfiglet.figlet_format("Game Over!", font="rectangles") + R
-    ascii_winner = GD + pyfiglet.figlet_format("Winner Winner!", font="rectangles") + R
+    ascii_correct = (GR + pyfiglet.figlet_format
+                     ("Correct!", font="rectangles") + R)
+    ascii_game_over = (RD + pyfiglet.figlet_format
+                       ("Game Over!", font="rectangles") + R)
+    ascii_winner = (GD + pyfiglet.figlet_format
+                    ("Winner Winner!", font="rectangles") + R)
     questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
     POINTS = 0
-    num_correct = 0
+    num_correct = 24
     for num, (question, alternatives) in enumerate(questions, start=1):
         print(ASCII_BANNER)
-        print(f"\nQuestion {num}:")
+        print(f"\n{YL}Question {num}:{R}")
         print(f"{question}")
         correct_answer = alternatives[0]
         labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
@@ -202,23 +206,23 @@ def run_game():
         if num_correct == 25:
             clear()
             print(ascii_winner)
-            print(f"Well done {USER_NAME} you great Python master!")
+            print(f"Well done {BL + USER_NAME + R}, you great Python master!")
             print(f"You scored {POINTS} points by answering all {num_correct}\
  questions correctly.\n")
-            print("Another 250 points will be added to your tally")
+            print(f"Another {GD}250{R} points will be added to your tally")
             print("for getting them all correctly.\n")
             POINTS += 250
             update_leaderboard()
             game_over()
             return
 
-        while ((answer_label := input("\nYour selection? ").lower()) not in
-               labeled_alternatives):
+        while ((answer_label := input(f"\n{YL}Your selection? {R}").lower())
+               not in labeled_alternatives):
             if answer_label == "q":
                 clear()
                 main_menu_page()
-            print(f"""\nNot a valid option!
-Please enter {','.join(labeled_alternatives)} or Q to quit to main menu""")
+            print(f"""\n{RD}Not a valid option!
+Please enter {','.join(labeled_alternatives)} or Q to quit to main menu{R}""")
 
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:
@@ -226,24 +230,24 @@ Please enter {','.join(labeled_alternatives)} or Q to quit to main menu""")
             print(ascii_correct)
             POINTS += 10
             num_correct += 1
-            print(f"Your have {POINTS} points.")
+            print(f"{GR}Your have {POINTS} points.{R}")
             sleep(2)
             clear()
         elif answer != correct_answer and num_correct == 0:
             clear()
             print(ascii_game_over)
-            print(f"\nOops {USER_NAME}!")
+            print(f"\nOops {BL + USER_NAME + R}!")
             print(f"The correct answer is {correct_answer!r}, not {answer!r}")
             print("You scored no points this round.\n")
             game_over()
         else:
             clear()
             print(ascii_game_over)
-            print(f"""The correct answer is {correct_answer!r},
-not {answer!r}\n""")
-            print(f"\nNicely done {USER_NAME}!")
-            print(f"""You scored {POINTS} points by answering {num_correct}
-questions correctly.\n""")
+            print(f"The correct answer is {correct_answer!r},\
+ not {answer!r}\n")
+            print(f"\nNicely done {BL + USER_NAME + R}!")
+            print(f"""You scored {POINTS} points by answering {num_correct}\
+ questions correctly.\n""")
             update_leaderboard()
             game_over()
 
