@@ -1,4 +1,7 @@
-# Python Quiz Game.
+# Introduction
+
+
+![Game banner](/assets/images/quiz_game_banner.png)
 
 This quiz is not like most quizzes out there, where you answer questions and by the end you get your score based on how many you got right or wrong. Basics of this game are simple. You get a question and four answers. Only one of the answer is correct. Where the "game" element comes in is when you answer that question. Answer correct and 10 points will be added to your account but answer incorrect and the game ends. Game records your name and score in database (Google sheet). Top 10 scores can be seen in High Scores section in main menu. Your goal is to get all 25 questions correct. Bonus will be added to your score and you can call yourself "Big deal in Python world"  
 
@@ -34,7 +37,7 @@ The game is Deployed on Code Institute mock terminal on Heroku. Live app can be 
 - As this game is developed with Python and designed to be run in the terminal, not to many design options available. Main emphasis in this app is readability. 
 
 ## Colour
-
+- 
 To add a small bit of colour to text [Python colored](https://pypi.org/project/colored/ "Python colored.") module was used.
 
 | Image | Color |
@@ -51,36 +54,29 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 ![Game banner](/assets/images/quiz_game_banner.png)
 
 
+## Flowcharts
+| Main game flow chart. | Quiz flow chart. |
+|---|---|
+| ![Python Quiz Game flow chart ](/assets/images/game_flow_chart.png) |  ![Quiz flow chart ](/assets/images/quiz_flow_chart.png) |
 
-## Wireframe
-
-### Wireframe for larger screens.
-
-Created the original wireframe very early on in the development process. Later on and after talking and getting advice from my mentor I changed the design slightly from what was originally planned. I have decided to show and hide certain elements as needed. This makes the look and feel of the game not as distracting, much cleaner and more responsive whatever the screen size.
-
-**Main Game Page**
-
-### Wireframe for smaller mobile screens.
 
 # Tools and technologies used
 
 ## Languages
 
-- JavaScript
+- Python
 - HTML
 - CSS
 
 ## Other tools and programs.
 
-- [Balsamiq](https://balsamiq.com/) was used for wireframing.
+- [Lucid](https://lucid.co/) was used to create flow charts.
 - [Visual Studio Code.](https://code.visualstudio.com/) Did all of my coding and synchronizing with GitHub on VS Code.
 - [Git](https://git-scm.com/) for version control.
-- [GitHub](https://github.com/) for hosting and deploying repositories.
-- [Font Awsome](https://fontawesome.com/) for icon images.
-- [imagecolorpicker.com](https://imagecolorpicker.com/) free online tool to pick the colours from the background images.
-- [Google Fonts](https://fonts.google.com/) was used to import the fonts
+- [GitHub](https://github.com/) for hosting repositories.
+- [Heroku](https://www.heroku.com/) where game is deployed using [Code Institute](https://codeinstitute.net/ie/) Python template.
 - [Grammarly](https://www.grammarly.com/) was used to double-check spelling mistakes.
-- [Createmockups.com](https://www.createmockup.com/) Responsive website mockup screenshot generator.
+- [Website Mockup Generator](https://websitemockupgenerator.com/) Responsive website mockup screenshot generator.
 
 ## Features
 
