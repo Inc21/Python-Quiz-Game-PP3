@@ -147,10 +147,10 @@ def high_scores():
                        ("High Scores.", font="rectangles") + R)
     print(ascii_hi_scores)
     SHEET.sheet1.sort((2, 'des'))
-    rowIDs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+    rowIDs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     page = SHEET.sheet1.get_all_values()
     print(tabulate(page[0:10], headers=["POSITION", "NAME", "POINTS"],
-                tablefmt='fancy_grid', numalign="center", showindex=rowIDs))
+                   tablefmt='fancy_grid', numalign="center", showindex=rowIDs))
     try:
         input(F"\n{YL}-> Press Enter to go back to main menu...{R}")
         clear()
