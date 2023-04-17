@@ -1,8 +1,8 @@
-# Heading 1
+# Python Quiz Game.
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+This quiz is not like most quizzes out there, where you answer questions and by the end you get your score based on how many you got right or wrong. Basics of this game are simple. You get a question and four answers. Only one of the answer is correct. Where the "game" element comes in is when you answer that question. Answer correct and 10 points will be added to your account but answer incorrect and the game ends. Game records your name and score in database (Google sheet). Top 10 scores can be seen in High Scores section in main menu. Your goal is to get all 25 questions correct. Bonus will be added to your score and you can call yourself "Big deal in Python world"  
 
-The link to the live website can be found [here.](https://https:// "https://https://")
+The game is Deployed on Code Institute mock terminal on Heroku. Live app can be found [here.](https://python-quiz-game-pp3.herokuapp.com/ "Python Quiz Game.")
 
 # User Stories
 

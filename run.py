@@ -81,7 +81,7 @@ def main_menu_page():
      with various options.
     """
     print(ASCII_BANNER)
-    print(f"Welcome {BL + USER_NAME + R}")
+    print(f"Welcome {BL + USER_NAME + R}!")
     print(f"Please select {YL}1, 2, 3 or 4{R} from the Main Menu below.\n ")
     print(f"{YL}1){R} Play the Quiz.")
     print(f"{YL}2){R} Game Instructions.")
@@ -92,7 +92,7 @@ def main_menu_page():
         user_option = 0
         try:
             user_option = (int(input(f"{YL}Whats's your next move\
- {BL + USER_NAME}: {R}\n")))
+ {BL + USER_NAME}{YL}? {R}\n")))
             if user_option == 1:
                 clear()
                 run_game()
@@ -127,6 +127,7 @@ def game_instructions():
     print("Simple really isn't it?\n")
     print("To select your answer, enter corresponding letter and hit enter.")
     print("Every correct answer is worth 10 points.\n")
+    print("When you get all 25 correct, bonus will be added to your score")
     print("Get question wrong and your game is over.")
     print("Your points are recorded and uploaded to the database.\n")
     print("Hopefully you did well enough to be in top 10 and see your")

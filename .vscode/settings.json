@@ -26,5 +26,8 @@
 "python.linting.mypyEnabled": true,
 "cSpell.words": [
    "timedate"
-]
+],
+"workbench.colorCustomizations": {
+
+}
 }
