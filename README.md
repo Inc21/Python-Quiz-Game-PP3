@@ -4,6 +4,10 @@ This quiz is not like most quizzes out there, where you answer questions and by 
 
 The game is Deployed on Code Institute mock terminal on Heroku. Live app can be found [here.](https://python-quiz-game-pp3.herokuapp.com/ "Python Quiz Game.")
 
+
+![mockup](/assets/images/mockup.png)
+
+
 # User Stories
 
 ### New User.
@@ -44,8 +48,9 @@ To add a small bit of colour to text [Python colored](https://pypi.org/project/c
 ## Font
 
 Arial is used for this app as per Code Institute template. Added custom ascii headers using [Python pyfiglet](https://pypi.org/project/pyfiglet/0.7/ "Python pyfiglet.") module.
+![Game banner](/assets/images/quiz_game_banner.png)
 
-- The fallback font is cursive, sans-serif.
+
 
 ## Wireframe
 
