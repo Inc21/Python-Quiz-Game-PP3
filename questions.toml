@@ -59,7 +59,7 @@
     ]
 
 "Is Python code compiled or interpreted?" = [
-    "getPython code is both compiled and interpretedopt", "Python code is only interpreted", "Python code is only compiled", "Python code is neither compiled nor interpreted"
+    "Python code is both compiled and interpreted", "Python code is only interpreted", "Python code is only compiled", "Python code is neither compiled nor interpreted"
     ]
 
 "Which of the following are valid escape sequences in Python?" = [
@@ -74,18 +74,15 @@
     "None of the answers is correct.", "int(144)==144", "int('144')==144", "int(144.0)==144"
     ]
 
-    "Python supports the creation of anonymous functions at runtime,
-     using a construct called?" = [
-    "lambda", "pi", "anonymous", "None of the answers is correct."
+    "Which of the following functions is a built-in function in python?" = [
+    "print()", "factorial()", "seed()", "All answers are correct."
     ]
 
 "What does pip stand for python?" = [
-    "Preferred Installer Program", "Pip Installs Python", "Pip Installs
-     Packages", "All answers are correct."
+    "Preferred Installer Program", "Pip Installs Python", "Pip Installs "Packages", "All answers are correct."
     ]
 
-"Which of the following modules need to be imported to handle date time
- computations in Py?" = [
+"What modules need to be imported to handle date time computations in Py?" = [
     "datetime", "date", "time", "timedate"
     ]
 
