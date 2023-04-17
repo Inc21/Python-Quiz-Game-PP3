@@ -34,8 +34,9 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
-ASCII_BANNER = (GR + pyfiglet.figlet_format
-                ("Python Quiz Game.", font="rectangles", justify="center") + R)
+ASCII_BANNER = GR + pyfiglet.figlet_format(
+    "Python Quiz Game.", font="rectangles", justify="center"
+    ) + R
 
 # Global variables that will be defined in functions.
 USER_NAME = ""
