@@ -8,19 +8,20 @@ The game is Deployed on Code Institute mock terminal on Heroku. Live app can be 
 
 ### New User.
 
-- I want...
-- I want...
+- I want to see instructions how to play this game.
+- I want to be challenged and test my Python knowledge.
+- I want to be able to see my score on the leaderboard and how it stacks up to the competition.
 
 ### Returning user.
 
-- As a returning user..
-- As a returning user...
+- As a returning user, I want to start the game quick without having to go through how to play instructions again.
+- As a returning user, I want to see and beat my previous score.
 
 ### Site owner objectives
 
-- As a site owner...
-- As a site owner...
-- As a site owner...
+- As a app creator, I want to provide fun learning experience.
+- As a app creator, I want to add competitive element to the quiz.
+- As a app creator, I want to be visually pleasant and readable.
 
 # Design
 
