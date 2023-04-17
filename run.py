@@ -50,7 +50,7 @@ def welcome_page():
     print(ASCII_BANNER)
     while True:
         try:
-            USER_NAME = input(YL + "Please enter your name: " + R)
+            USER_NAME = input(YL + "Please enter your name:\n" + R)
         except ValueError:
             print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters\
  long and can't contain 2 or more spaces.{R}\n")
@@ -90,7 +90,7 @@ def main_menu_page():
     while True:
         try:
             user_option = (int(input(f"{YL}Whats's your next move\
- {BL + USER_NAME}: {R}")))
+ {BL + USER_NAME}: {R}\n")))
         except ValueError:
             print(f"\n{RD}Not a valid entry! Please enter 1, 2, 3 or 4!{R}\n")
         if user_option == 1:
@@ -130,7 +130,7 @@ def game_instructions():
  main menu")
     print("but points you worked so hard to get are lost forever.\n")
     try:
-        input(f" {YL}-> Press Enter to go back to main menu...{R}")
+        input(f" {YL}-> Press Enter to go back to main menu...{R}\n")
         clear()
         main_menu_page()
     except SyntaxError:
@@ -152,7 +152,7 @@ def high_scores():
     print(tabulate(page[0:10], headers=["POSITION", "NAME", "POINTS"],
                    tablefmt='fancy_grid', numalign="center", showindex=rowIDs))
     try:
-        input(F"\n{YL}-> Press Enter to go back to main menu...{R}")
+        input(F"\n{YL}-> Press Enter to go back to main menu...{R}\n")
         clear()
         main_menu_page()
     except SyntaxError:
@@ -167,7 +167,7 @@ def game_over():
     while True:
         try:
             game_over_user = input(F"""{YL}Would you like to play again?
-Type Y for yes or Q to go back to main menu: {R}""").lower()
+Type Y for yes or Q to go back to main menu: {R}\n""").lower()
         except ValueError:
             print(F"\n{RD}Not a valid option, please enter Y or Q{R}\n")
         if game_over_user == "q":
@@ -218,7 +218,7 @@ def run_game():
             game_over()
             return
 
-        while ((answer_label := input(f"\n{YL}Your selection? {R}").lower())
+        while ((answer_label := input(f"\n{YL}Your selection? {R}\n").lower())
                not in labeled_alternatives):
             if answer_label == "q":
                 clear()
