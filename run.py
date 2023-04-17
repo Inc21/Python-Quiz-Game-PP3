@@ -90,8 +90,8 @@ def main_menu_page():
     while True:
         user_option = 0
         try:
-            user_option = (int(input
-                      (f"{YL}Whats's your next move {BL + USER_NAME}: {R}\n")))
+            user_option = (int(input(f"{YL}Whats's your next move\
+ {BL + USER_NAME}: {R}\n")))
             if user_option == 1:
                 clear()
                 run_game()
@@ -117,8 +117,9 @@ def game_instructions():
     Displays game instructions. Includes option to return to main
     menu by pressing enter key.
     """
-    ascii_instructions = (GR + pyfiglet.figlet_format("Instructions.", font=
-                                           "rectangles", justify="center") + R)
+    ascii_instructions = GR + pyfiglet.figlet_format(
+        "Instructions.", font="rectangles", justify="center"
+        ) + R
     print(ascii_instructions)
     print("To play the game, all you have to do is answer all")
     print("25 questions correctly.")
@@ -146,14 +147,15 @@ def high_scores():
     the screen. Using tabulate prints top 10 results. Sorts results
     using sort(). Also has option to return to main menu by pressing enter key.
     """
-    ascii_hi_scores = (GR + pyfiglet.figlet_format
-                    ("High Scores.", font="rectangles", justify="center") + R)
+    ascii_hi_scores = GR + pyfiglet.figlet_format(
+        "High Scores.", font="rectangles", justify="center"
+        ) + R
     print(ascii_hi_scores)
     SHEET.sheet1.sort((2, 'des'))
-    rowIDs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    row_id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     page = SHEET.sheet1.get_all_values()
     print(tabulate(page[0:10], headers=["POSITION", "NAME", "POINTS"],
-                   tablefmt='fancy_grid', numalign="center", showindex=rowIDs))
+                   tablefmt='fancy_grid', numalign="center", showindex=row_id))
     try:
         input(F"\n{YL}-> Press Enter to go back to main menu...{R}\n")
         clear()
@@ -191,12 +193,15 @@ def run_game():
     Displays next question if answer correct otherwise, game over.
     """
     global POINTS
-    ascii_correct = (GR + pyfiglet.figlet_format
-                     ("Correct!", font="rectangles", justify="center") + R)
-    ascii_game_over = (RD + pyfiglet.figlet_format
-                       ("Game Over!", font="rectangles", justify="center") + R)
-    ascii_winner = (GD + pyfiglet.figlet_format
-                   ("Winner Winner!", font="rectangles", justify="center") + R)
+    ascii_correct = GR + pyfiglet.figlet_format(
+        "Correct!", font="rectangles", justify="center"
+        ) + R
+    ascii_game_over = RD + pyfiglet.figlet_format(
+        "Game Over!", font="rectangles", justify="center"
+        ) + R
+    ascii_winner = GD + pyfiglet.figlet_format(
+        "Winner Winner!", font="rectangles", justify="center"
+        ) + R
     questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
     POINTS = 0
     num_correct = 0
@@ -235,7 +240,7 @@ Please enter {','.join(labeled_alternatives)} or Q to quit to main menu{R}""")
             print(ascii_correct)
             POINTS += 10
             num_correct += 1
-            print(f"{GR}Your have {POINTS} points.{R}")
+            print(f"{GR}You have {POINTS} points.{R}")
             sleep(2)
             clear()
         elif answer != correct_answer and num_correct == 0:
