@@ -23,7 +23,7 @@ SCOPE = [
 GR = fg("dark_olive_green_2")
 RD = fg("light_red")
 GD = fg("gold_3a")
-YL = fg("yellow")
+YL = fg("light_yellow")
 BL = fg("turquoise_2")
 R = attr("reset")
 

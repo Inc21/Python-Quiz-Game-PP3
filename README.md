@@ -27,15 +27,23 @@ The game is Deployed on Code Institute mock terminal on Heroku. Live app can be 
 
 ## Look and feel
 
-- At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
+- As this game is developed with Python and designed to be run in the terminal, not to many design options available. Main emphasis in this app is readability. 
 
 ## Colour
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
+To add a small bit of colour to text [Python colored](https://pypi.org/project/colored/ "Python colored.") module was used.
+
+| Image | Color |
+|---|---|
+| ![dark_olive_green_2](/assets/images/dark_olive_green_2.png) | dark_olive_green_2 |
+| ![light_red](/assets/images/light_red.png) | light_red |
+| ![gold_3a](/assets/images/gold_3a.png) | gold_3a |
+| ![light_yellow](/assets/images/light_yellow.png) | light_yellow |
+| ![turquoise_2](/assets/images/turquoise_2.png) | turquoise_2 |
 
 ## Font
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
+Arial is used for this app as per Code Institute template. Added custom ascii headers using [Python pyfiglet](https://pypi.org/project/pyfiglet/0.7/ "Python pyfiglet.") module.
 
 - The fallback font is cursive, sans-serif.
 
