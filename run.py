@@ -127,7 +127,7 @@ def game_instructions():
     print("Simple really isn't it?\n")
     print("To select your answer, enter corresponding letter and hit enter.")
     print("Every correct answer is worth 10 points.\n")
-    print("When you get all 25 correct, bonus will be added to your score")
+    print("When you get all 25 correct, bonus will be added to your score.\n")
     print("Get question wrong and your game is over.")
     print("Your points are recorded and uploaded to the database.\n")
     print("Hopefully you did well enough to be in top 10 and see your")
