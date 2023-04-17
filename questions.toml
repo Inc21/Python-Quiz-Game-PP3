@@ -79,7 +79,7 @@
     ]
 
 "What does pip stand for python?" = [
-    "Preferred Installer Program", "Pip Installs Python", "Pip Installs "Packages", "All answers are correct."
+    "Preferred Installer Program", "Pip Installs Python", "Pip Installs Packages", "All answers are correct."
     ]
 
 "What modules need to be imported to handle date time computations in Py?" = [
