@@ -71,6 +71,7 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 
 - [Lucid](https://lucid.co/) was used to create flow charts.
 - [Visual Studio Code.](https://code.visualstudio.com/) Did all of my coding and synchronizing with GitHub on VS Code.
+- [Google](https://www.google.ie/?gws_rd=ssl) sheets to store leaderboard.
 - [Git](https://git-scm.com/) for version control.
 - [GitHub](https://github.com/) for hosting repositories.
 - [Heroku](https://www.heroku.com/) where game is deployed using [Code Institute](https://codeinstitute.net/ie/) Python template.
@@ -101,31 +102,37 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 
 - Displayed when player answers question correctly. This page is on delay. After 2 seconds new question is loaded.
 
-![Game play](/assets/images/correct.png)
+![User answer is correct](/assets/images/correct.png)
+
+### All 25 Correct
+
+- Only displayed when player answers all 25 questions correct.
+
+![Winner screen](/assets/images/winner_winner.png)
 
 ### Game Over
 
-- Displayed when player answers question incorrectly. 
+- Displayed when player answers question incorrectly. Correct answer is displayed for added learning opportunity.
 
-![Game play](/assets/images/game_over.png)
+![User answer is incorrect](/assets/images/game_over.png)
 
 ### Game Over 0 points
 
-- Displayed when player answers first question incorrectly and has no points. 
+- Displayed when player answers first question incorrectly and has no points. Correct answer is displayed for added learning opportunity.
 
-![Game play](/assets/images/game_over_0.png)
+![User first answer is correct](/assets/images/game_over_0.png)
 
-### Game Over
+### Instructions
 
-- Displayed when player answers question incorrectly. 
+- Option 2 in main menu. Instructions how to play the game and game end goal is displayed.
 
-![Game play](/assets/images/game_over.png)
+![Instructions](/assets/images/instructions.png)
 
-### Game Over
+### High Scores
 
-- Displayed when player answers question incorrectly. 
+- Option 3 in main menu. When opened it pulls most up-to-date leaderboard from Google sheets and displays top 10 highest scores.  
 
-![Game play](/assets/images/game_over.png)
+![High scores](/assets/images/high_scores.png)
 
 ### Features Left to Implement
 
