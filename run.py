@@ -35,7 +35,7 @@ SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
 ASCII_BANNER = (GR + pyfiglet.figlet_format
-                ("Python Quiz Game.", font="rectangles") + R)
+                ("Python Quiz Game.", font="rectangles", justify="center") + R)
 
 # Global variables that will be defined in functions.
 USER_NAME = ""
@@ -114,20 +114,20 @@ def game_instructions():
     Displays game instructions. Includes option to return to main
     menu by pressing enter key.
     """
-    ascii_instructions = (GR + pyfiglet.figlet_format
-                          ("Instructions.", font="rectangles") + R)
+    ascii_instructions = (GR + pyfiglet.figlet_format("Instructions.", font=
+                                           "rectangles", justify="center") + R)
     print(ascii_instructions)
-    print("To play the game, all you have to do is answer all\
- 25 questions correctly.")
+    print("To play the game, all you have to do is answer all")
+    print("25 questions correctly.")
     print("Simple really isn't it?\n")
     print("To select your answer, enter corresponding letter and hit enter.")
     print("Every correct answer is worth 10 points.\n")
     print("Get question wrong and your game is over.")
     print("Your points are recorded and uploaded to the database.\n")
-    print("Hopefully you did well enough to be in top 10 and see your name on\
- the leaderboard.\n")
-    print("To end the game during play, you can enter letter Q to return to\
- main menu")
+    print("Hopefully you did well enough to be in top 10 and see your")
+    print("name on the leaderboard.\n")
+    print("To end the game during play, you can enter letter Q to")
+    print("return to main menu")
     print("but points you worked so hard to get are lost forever.\n")
     try:
         input(f" {YL}-> Press Enter to go back to main menu...{R}\n")
@@ -144,7 +144,7 @@ def high_scores():
     using sort(). Also has option to return to main menu by pressing enter key.
     """
     ascii_hi_scores = (GR + pyfiglet.figlet_format
-                       ("High Scores.", font="rectangles") + R)
+                    ("High Scores.", font="rectangles", justify="center") + R)
     print(ascii_hi_scores)
     SHEET.sheet1.sort((2, 'des'))
     rowIDs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -189,11 +189,11 @@ def run_game():
     """
     global POINTS
     ascii_correct = (GR + pyfiglet.figlet_format
-                     ("Correct!", font="rectangles") + R)
+                     ("Correct!", font="rectangles", justify="center") + R)
     ascii_game_over = (RD + pyfiglet.figlet_format
-                       ("Game Over!", font="rectangles") + R)
+                       ("Game Over!", font="rectangles", justify="center") + R)
     ascii_winner = (GD + pyfiglet.figlet_format
-                    ("Winner Winner!", font="rectangles") + R)
+                   ("Winner Winner!", font="rectangles", justify="center") + R)
     questions = random.sample(list(QUESTIONS.items()), len(QUESTIONS))
     POINTS = 0
     num_correct = 0
