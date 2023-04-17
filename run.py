@@ -88,9 +88,10 @@ def main_menu_page():
     print(f"{YL}4){R} Exit Game.\n")
 
     while True:
+        user_option = 0
         try:
-            user_option = (int(input(f"{YL}Whats's your next move\
- {BL + USER_NAME}: {R}\n")))
+            user_option = (int(input
+                      (f"{YL}Whats's your next move{BL + USER_NAME}: {R}\n")))
         except ValueError:
             print(f"\n{RD}Not a valid entry! Please enter 1, 2, 3 or 4!{R}\n")
         if user_option == 1:
