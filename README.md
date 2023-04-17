@@ -37,8 +37,7 @@ The game is Deployed on Code Institute mock terminal on Heroku. Live app can be 
 - As this game is developed with Python and designed to be run in the terminal, not to many design options available. Main emphasis in this app is readability. 
 
 ## Colour
-- 
-To add a small bit of colour to text [Python colored](https://pypi.org/project/colored/ "Python colored.") module was used.
+- To add a small bit of colour to text [Python colored](https://pypi.org/project/colored/ "Python colored.") module was used.
 
 | Image | Color |
 |---|---|
@@ -78,24 +77,55 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 - [Grammarly](https://www.grammarly.com/) was used to double-check spelling mistakes.
 - [Website Mockup Generator](https://websitemockupgenerator.com/) Responsive website mockup screenshot generator.
 
-## Features
+## Existing Features
 
-### Existing Features
+### Welcome screen
 
-**Header of the page**
+- This is the fist screen when program is run. To continue user has to enter a name.
 
-    -   
-    
+![Welcome screen](/assets/images/welcome_screen.png)  
 
-**The Body**
+### Main menu
 
-    -   
-    
+- Once user enters valid name, main menu screen is loaded. 
 
-**The Footer**
+![Main menu](/assets/images/main_menu.png)  
 
-    -   
-    
+### Play the quiz
+
+- Option 1 - Play the Quiz.. 
+
+![Game play](/assets/images/the_game.png) 
+
+### Correct
+
+- Displayed when player answers question correctly. This page is on delay. After 2 seconds new question is loaded.
+
+![Game play](/assets/images/correct.png)
+
+### Game Over
+
+- Displayed when player answers question incorrectly. 
+
+![Game play](/assets/images/game_over.png)
+
+### Game Over 0 points
+
+- Displayed when player answers first question incorrectly and has no points. 
+
+![Game play](/assets/images/game_over_0.png)
+
+### Game Over
+
+- Displayed when player answers question incorrectly. 
+
+![Game play](/assets/images/game_over.png)
+
+### Game Over
+
+- Displayed when player answers question incorrectly. 
+
+![Game play](/assets/images/game_over.png)
 
 ### Features Left to Implement
 

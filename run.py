@@ -210,7 +210,7 @@ def run_game():
     for num, (question, alternatives) in enumerate(questions, start=1):
         print(ASCII_BANNER)
         print(f"\n{YL}Question {num}:{R}")
-        print(f"{question}")
+        print(f"\n{question}\n")
         correct_answer = alternatives[0]
         labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
         for label, alternative in labeled_alternatives.items():
