@@ -91,23 +91,25 @@ def main_menu_page():
         user_option = 0
         try:
             user_option = (int(input
-                      (f"{YL}Whats's your next move{BL + USER_NAME}: {R}\n")))
+                      (f"{YL}Whats's your next move {BL + USER_NAME}: {R}\n")))
+            if user_option == 1:
+                clear()
+                run_game()
+            elif user_option == 2:
+                clear()
+                game_instructions()
+            elif user_option == 3:
+                clear()
+                high_scores()
+            elif user_option == 4:
+                clear()
+                exit()
+            else:
+                print(f"{RD}\nNot a valid entry!{R}")
+                print(f"{RD}Please enter 1, 2, 3 or 4!{R}")
         except ValueError:
-            print(f"\n{RD}Not a valid entry! Please enter 1, 2, 3 or 4!{R}\n")
-        if user_option == 1:
-            clear()
-            run_game()
-        elif user_option == 2:
-            clear()
-            game_instructions()
-        elif user_option == 3:
-            clear()
-            high_scores()
-        elif user_option == 4:
-            clear()
-            exit()
-        else:
-            print(f"\n{RD}Not a valid entry! Please enter 1, 2, 3 or 4!{R}")
+            print(f"{RD}\nNot a valid entry!{R}")
+            print(f"{RD}Please enter 1, 2, 3 or 4!{R}")
 
 
 def game_instructions():
