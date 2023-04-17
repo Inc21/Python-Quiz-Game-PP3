@@ -52,14 +52,14 @@ def welcome_page():
         try:
             USER_NAME = input(YL + "Please enter your name:\n" + R)
         except ValueError:
-            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters\
- long and can't contain 2 or more spaces.{R}\n")
+            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters{R}")
+            print(f"{RD}long and can't contain 2 or more spaces.{R}\n")
         if (len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and
                 USER_NAME.count("  ") <= 0):
             break
         else:
-            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters\
- long and can't contain 2 or more spaces.{R}\n")
+            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters{R}")
+            print(f"{RD}long and can't contain 2 or more spaces.{R}\n")
 
 
 def clear():
@@ -209,8 +209,8 @@ def run_game():
             clear()
             print(ascii_winner)
             print(f"Well done {BL + USER_NAME + R}, you great Python master!")
-            print(f"You scored {POINTS} points by answering all {num_correct}\
- questions correctly.\n")
+            print(f"You scored {POINTS} points by answering all")
+            print(f"{num_correct} questions correctly.\n")
             print(f"Another {GD}250{R} points will be added to your tally")
             print("for getting them all correctly.\n")
             POINTS += 250
