@@ -138,9 +138,12 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 
 ### High Scores
 
-- Option 3 in main menu. When opened it pulls most up-to-date leaderboard from Google sheets and displays top 10 highest scores.  
+-  Option 3 in main menu. When opened it pulls most up-to-date leaderboard from Google sheets and displays top 10 highest scores. 
+    - Data is stored in Google sheets and in order of entry. File is sorted by "score" or B column once pulled by the app. All valid tries will be recorded but only top 10 results will be displayed.
 
-![High scores](/assets/images/high_scores.png)
+|   |  |
+| - | - |
+| ![High scores](/assets/images/high_scores.png) | ![Google Sheets](/assets/images/sheets.png)
 
 ### Exit
 
@@ -156,9 +159,17 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 - Leaderboard top 10 fills very quickly with same users. would be great to add feature that records "user best score", not all attempts. 
     
 
-## Testing
+ ## Testing
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+This app was developed on Dell desktop running windows 10. Testing was performed both locally and when deployed to Heroku. Using same computer and HP laptop running Windows 11 tried to "break" the program by entering random key entries. All my findings were corrected.
+Also posted this project to Slack Peer code review and to my class page. One typo was reported back, which was fixed immediately.
+
+### PEP8 Code Institute Python Linter Testing
+- All clear, no errors found
+
+
+![PEP8 Linter](/assets/images/py_lint.png)
+
 
 ### User Stories Testing
 
@@ -200,20 +211,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit 
 | Google Chrome Lighthouse was used to test the performance of the app. Testing was performed in private browsing mode. | ![Google lighthouse](/assets/images/lighthouse.png) |
 
 
-
-
-Desktop
-
-Mobile
-
 ## Interesting bug or problems.
 
-    -   
-    
+ Very new to Python language and most of this project was interesting problem that needed to be solved. Some standout problems listed below:
+1. Python line too long. 
+    - Researched this way more hours then I should have. Although PEP8 reports no errors, I think some of my solutions could be nicer and more readable. Also found a way to add line on vsCode window to show me when my line was getting too long in real time. This was a big help. Had about 20 Line too long errors on the first pass with CI linter.
+2. Screen gets very cluttered looking with text history remaining on screen. User has to scroll to see important information.
+    - That is another problem that took a big chunk of my available time. Ended up creating function called clear(). This clears the screen from old print statements for much better user experience.
+3. Display and sort leaderboard imported from Google sheets.
+    - Found sort() function after some very intense googling. That solved sorting leaderboard. After many trial and error ways to try to display that table on limited terminal window, tabulate was chosen for the job.
+     
 
 ## Unfixed Bugs
 
-No errors are reported by CI PEP8 Python Linter. Vs Code is reporting one error and two warnings.
+No errors are reported by CI PEP8 Python Linter. vsCode is reporting one error and two warnings.
 - 2 instances where I'm using the global statement. Pylint(W0603:global-statement)
     - Have USER_NAME and POINTS variables stated as global. Both are defined within function but will be used but are not redefined in other functions. I'm sure there is many more elegant ways to get around this. After spending many hours at this problem and as its not fatal error, decided to come back to it when possible.
 - Name "tomllib" already defined (by an import)  [no-redef].
@@ -223,34 +234,54 @@ No errors are reported by CI PEP8 Python Linter. Vs Code is reporting one error 
 
 ## Deployment
 
-### Deploy with GitHub Pages.
 
-The steps to deploy are as follows:
+### Deploy with Heroku
 
-    - On my [GitHub](https://github.com/Inc21) profile page, top center of the screen click on repositories.
-    - Click on 
-    - In the ##### repository, navigate to the Settings tab.
-    - Menu list on the left of the screen, navigate to the pages tab.
-    - From the GitHub pages, branch section drop-down menu, select the main Branch and hit the save button.
-    - Once the main branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+1. Go on to [Heroku](https://www.heroku.com/) website and [log in](https://id.heroku.com/login) if you already have an account or [sign up](https://signup.heroku.com/) if you don't. 
+2. Click on the "New" button on the top right of the home page and select "Create new App" from the drop-down menu.
+3. In the "App name" field enter name for your app. This name has to be unique. 
+    - Heroku displays green tick is your app name is available.
+4. In "choose a region" field choose either United States or Europe based on your location.
+5. Click "Create app" button.
+6. Next page, top center of the screen, select "Settings" tab. 
+7. In "Config Vars" section, click on "Reveal config Vars" button.
+8. In this section you need to enter you google sheets credentials. 
+    1. Type name of credentials (CREDS in my case) file into "KEY" field.
+    2. Open your IDE and find CREDS.json in your project files.
+    3. Copy/paste everything in this file to "VALUE" field and click "Add" button.
+9. Just below in "Buildpacks" section click on "Add buildback" button. Buildpacks have to be installed in this order.
+    1. Click on "Python" button to select it and then "Save changes" button.
+    2. Click again on "Add buildback" button.
+    3. Click on "nodejs" button to select it and then "Save changes" button.
+10. Go back to the top of the screen and select "Deploy" tab.
+11. In "Deployment method" section select "GitHub".
+    1. In "Connect to GitHub" click on "Search" button. Find project repository in the list and click on "Connect" button.
+    2. Scroll to the bottom of that page. Click on "Enable Automatic Deploys" button to update deploy also when you push new commit to GitHub.
+    3. At teh very bottom of the page click on "Deploy Branch" button.
+12. You will see build log scrolling at the bottom of the screen after that. When successfully finished building the app, you should see the link to your app.
 
-The live link can be found here - [here](https://https:// "https://https://")
 
-### Local Deployment
+### Clone project 
 
-The steps to deploy are as follows:
-
-    - On my [GitHub](https://github.com/Inc21) profile page, top centre of the screen click on repositories.
-    - Click on
-    - In the tic-tac-toe-pp2 repository, click on the 'Code' button.
+- To clone this project.  
+    - On my [GitHub](https://github.com/Inc21) profile page, top centre of the screen click on "repositories".
+    -  Find and click on "Python-Quiz-Game-PP3" repository.
+    - In the repository page that opens, click on the 'Code' button.
     - Menu that opens make sure you are in the "local" tab, copy the link in "HTTPS".
-    - on a Windows machine, open the command prompt (press windows+R to open the "Run" box. Type "cmd" on then click ok).
-    - In cmd type "git clone" and paste the link you copied earlier (ctrl+V). Example: git clone
+    - paste that link into relevant section in your ide to clone repository.
+        - CodeAnywhere. 
+        - - Click on new "New Workspace" and paste that link to "Repository URL" field.
+        - vsCode. 
+        - - Select "File" and "New Window". In the middle of the page select "Clone Git Repositry...", 
+        - - Paste that link into search box at the top of the screen and hit enter.
+        - - Select local destination for repository files.
+        
 
 ### Fork repository
 
-    - To fork a repository that is not yours
-    - Click on the 'Fork' button on the top right of the screen
+- To fork this repository.
+    - Open my [GitHub repository](https://github.com/Inc21/Python-Quiz-Game-PP3).
+    - Click on the 'Fork' button on the top right of the screen.
     - On the 'Create a new fork' page you are given the option to rename that repository and then click on the green 'Create fork' button at the bottom of the form.
 
 ## Content
