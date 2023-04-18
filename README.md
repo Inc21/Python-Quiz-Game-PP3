@@ -145,7 +145,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit 
 
 ### User Stories Testing
 
-| **Expectation** | **Result** | **Images** |
+| Expectation | Result | Images |
 | --- | --- | --- |
 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam diam. In semper aliquet mi eget dignissim. Etiam pharetra elit id interdum accumsan. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam diam. In semper aliquet mi eget dignissim. Etiam pharetra elit id interdum accumsan. |     |
 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam diam. In semper aliquet mi eget dignissim. Etiam pharetra elit id interdum accumsan. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam diam. In semper aliquet mi eget dignissim. Etiam pharetra elit id interdum accumsan. |     |
@@ -160,15 +160,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit 
 
 ### Link testing
 
-| **Action** | **Expected Result** | **Actual Result** |
+| Action | Expected Result | Actual Result |
 | --- | --- | --- |
 |     |     | Working as expected |
 
-###   
 
 ###  Manual Testing.
 
-| **Action** | **Expected Result** | **Actual Result** | **Image** |
+| Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
 |     |     | Working as expected |     |
 |     |     | Working as expected |     |
@@ -176,29 +175,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit 
 |     |     | Working as expected |     |
 |     |     | Working as expected. |     |
 
-###   
 
-###   
+## Google Lighthouse testing 
 
-### jsHint Testing
+| Text | Image |
+| --- | --- |
+| Google Chrome Lighthouse was used to test the performance of the app. Testing was performed in private browsing mode. | ![Google lighthouse](/assets/images/lighthouse.png) |
 
-    -   
-    
 
-### Validator Testing
 
-    - HTML
-    
-    - CSS
-    
-    [![Valid CSS!](https://jigsaw.w3.org/css-validator/images/vcss-blue)](https://jigsaw.w3.org/css-validator/check/referer)
-    
-
-        - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-running-2.0%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#css).
-
-**Google Lighthouse testing**
-
-    - Testing was performed in private browsing mode.
 
 Desktop
 
