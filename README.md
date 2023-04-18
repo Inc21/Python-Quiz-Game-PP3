@@ -63,9 +63,17 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 
 ## Languages
 
-- Python
-- HTML
-- CSS
+- Python language and Python modules listed below.
+    - [random](https://docs.python.org/3/library/random.html) To randomize order of the questions and answers.
+    - [tomllib](https://docs.python.org/3/library/tomllib.html) Parse TOML file. Questions are stored in questions.toml file.
+    - [os](https://docs.python.org/3/library/os.html?highlight=os#module-os) To get operating system name and clear the screen after some user options.
+    - [time.sleep](https://docs.python.org/3/library/time.html?highlight=sleep#time.sleep) To add delay after user answers question correctly.
+    - [pyfiglet](https://pypi.org/project/pyfiglet/0.7/#:~:text=Pyfiglet%20is%20also%20a%20library,fonts%20from%20a%20zip%20archive.) To add some ascii text art.
+    - [gspread](https://docs.gspread.org/en/v5.7.1/) Google Sheets to store "leaderboard"
+    - [tabulate](https://pypi.org/project/tabulate/) To create and nicely display leaderboard in terminal.
+    - [colored](https://pypi.org/project/colored/) Was used to add color to terminal.
+
+
 
 ## Other tools and programs.
 
@@ -134,9 +142,18 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 
 ![High scores](/assets/images/high_scores.png)
 
+### Exit
+
+- Option 4 in main menu. When user chooses to leave the game nice thank you for playing message is printed on the screen.
+
+![Exit message](/assets/images/exit_message.png)
+
+
 ### Features Left to Implement
 
-    -   
+- Different game modes Like "novice", "advanced" and "expert".
+- Other common coding languages like JavaScript, html and others.
+- Leaderboard top 10 fills very quickly with same users. would be great to add feature that records "user best score", not all attempts. 
     
 
 ## Testing
@@ -196,7 +213,13 @@ Mobile
 
 ## Unfixed Bugs
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+No errors are reported by CI PEP8 Python Linter. Vs Code is reporting one error and two warnings.
+- 2 instances where I'm using the global statement. Pylint(W0603:global-statement)
+    - Have USER_NAME and POINTS variables stated as global. Both are defined within function but will be used but are not redefined in other functions. I'm sure there is many more elegant ways to get around this. After spending many hours at this problem and as its not fatal error, decided to come back to it when possible.
+- Name "tomllib" already defined (by an import)  [no-redef].
+    - When researching a way to have questions stored in a separate file, went with [Real Pythons](https://realpython.com/python311-tomllib/) explanation to use TOML file. Used try/except statement as per their guide. try:import tomllib, except ModuleNotFoundError: import tomli as tomllib. By my understanding Python 3.11 uses tomllib and older versions of Python use TOML. This seems to be only error thats reported by mypy in vsCode. Very easily solvable by just deleting other instance of tomllib but to be backwards compatible and as it seems to create no bugs have decided to leave it as is.
+    ...
+
 
 ## Deployment
 
@@ -232,22 +255,17 @@ The steps to deploy are as follows:
 
 ## Content
 
-    -   
-    
+Questions gathered from the internet:
+-   [InterviewBit](https://www.interviewbit.com/)
+-   [tutorialspoint](https://www.tutorialspoint.com/index.htm)
+-   [sanfoundry](https://www.sanfoundry.com/1000-python-questions-answers/)
 
-## Media
-
-    -   
-    
-    -   
-    
 
 # Credits
 
 Would like to say thanks to all for the support throughout the project.
 
-    - [Code Institute](https://codeinstitute.net/ie/) for pointing me in this interesting direction.
-    - [Slack community](https://slack.com/intl/en-ie/) and my classmates for tips and tricks and entertainment.
-    -   
-    
-    - My mentor Dick Vlaanderen who is continuously very supportive of me and very knowledgeable.
+- [Real Python](https://realpython.com/) Great site for some extra python content. Lot of inspiration was taken from there.
+- [Code Institute](https://codeinstitute.net/ie/) Love Sandwiches.
+- [Slack community](https://slack.com/intl/en-ie/) and my classmates for tips and tricks and entertainment.
+- My mentor Dick Vlaanderen who is continuously very supportive of me and very knowledgeable.

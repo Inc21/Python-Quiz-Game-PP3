@@ -25,7 +25,10 @@
 "editor.defaultFormatter": "HookyQR.beautify",
 "python.linting.mypyEnabled": true,
 "cSpell.words": [
-   "timedate"
+   "pathlib",
+   "redef",
+   "timedate",
+   "tomllib"
 ],
 "workbench.colorCustomizations": {
 
