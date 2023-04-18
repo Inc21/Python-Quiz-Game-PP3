@@ -104,6 +104,10 @@ def main_menu_page():
                 high_scores()
             elif user_option == 4:
                 clear()
+                print(ASCII_BANNER)
+                print(f"{YL}\
+                Thanks for playing Python Quiz Game {BL}{USER_NAME}!{R}")
+                sleep(4)
                 exit()
             else:
                 print(f"{RD}\nNot a valid entry!{R}")
