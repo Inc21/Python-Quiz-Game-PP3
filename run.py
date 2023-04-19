@@ -43,26 +43,6 @@ USER_NAME = ""
 POINTS = 0
 
 
-def welcome_page():
-    """
-    Loaded up first when terminal opened, greets user and asks for their name.
-    """
-    global USER_NAME
-    print(ASCII_BANNER)
-    while True:
-        try:
-            USER_NAME = input(YL + "Please enter your name:\n" + R)
-        except ValueError:
-            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters{R}")
-            print(f"{RD}long and can't contain 2 or more spaces.{R}\n")
-        if (len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and
-                USER_NAME.count("  ") <= 0):
-            break
-        else:
-            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters{R}")
-            print(f"{RD}long and can't contain 2 or more spaces.{R}\n")
-
-
 def clear():
     """
     Function to clear the terminal on windows, mac and
@@ -74,6 +54,31 @@ def clear():
     # for mac and linux(here, os.name is 'posix')
     else:
         os.system('clear')
+
+
+def welcome_page():
+    """
+    Loaded up first when terminal opened, greets user and asks for their name.
+    """
+    global USER_NAME
+    print(ASCII_BANNER)
+    while True:
+        try:
+            USER_NAME = input(YL + "Please enter your name:\n" + R)
+        except ValueError:
+            clear()
+            print(ASCII_BANNER)
+            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters{R}")
+            print(f"{RD}long and can't contain 2 or more spaces.{R}\n")
+        if (len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and
+                USER_NAME.count("  ") <= 0):
+            break
+        else:
+            clear()
+            print(ASCII_BANNER)
+            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters{R}")
+            print(f"{RD}long and can't contain 2 or more spaces.{R}\n")
+
 
 
 def main_menu_page():
