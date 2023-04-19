@@ -189,48 +189,51 @@ Also posted this project to Slack Peer code review and to my class page. One typ
 ![](/assets/images/welcome_page_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
-|  User hits enter without entering a name. | Invalid entry error is displayed along with the examples of correct entries.  | Working as expected | ![](/assets/images/invalid_name.png) |
-| User enters name that is more than 10 characters | Invalid entry error is displayed along with the examples of correct entries.  ! | Working as expected | ![](/assets/images/invalid_name.png) |
-| User enters just 1 character | Invalid entry error is displayed along with the examples of correct entries. | Working as expected | ![](/assets/images/invalid_name.png)|
+|  User hits enter without entering a name. | Invalid entry error is displayed along with the examples of correct entries.  | Working as expected | ![](/assets/images/invalid_user_none.png) |
+| User enters name that is more than 10 characters | Invalid entry error is displayed along with the examples of correct entries.  ! | Working as expected | ![](/assets/images/invalid_user.png) |
+| User enters just 1 character | Invalid entry error is displayed along with the examples of correct entries. | Working as expected | ![](/assets/images/invalid_user_1.png)|
 | User enters a valid name. | App to load "Main Menu" page. | Working as expected |     |
 
 ### Main menu page Testing.
 ![](/assets/images/menu_page_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
+| User enters number "1" | Load Quiz page | Working as expected | |
+| User enters number "2" | Load game instructions page | Working as expected | |
+| User enters number "3" | Load high scores page | Working as expected | |
+| User enters number "4" | Load goodbye message and exit the game | Working as expected | |
+| User enters random wrong character or empty enter. | Display red error message and show correct options. | Working as expected | ![](/assets/images/invalid_meny_random.png) |
 
 ### Game Instructions page Testing.
 ![](/assets/images/instructions_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
+| User enters random character or empty enter. | Game loads or goes back to main menu page. | Working as expected | ![](/assets/images/instuctions_go_back.png) |
 
 ### High scores page Testing.
 ![](/assets/images/high_scores_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
+| User enters random character or empty enter. | Game loads or goes back to main menu page. | Working as expected | ![](/assets/images/high_scores_go_back.png) |
 
 ### Quiz page Testing.
 ![](/assets/images/quiz_page_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
-
-
-### User answer correct.
-![](/assets/images/correct_small.png)
-| Action | Expected Result | Actual Result | Image |
-| --- | --- | --- | --- |
+| User answers question correctly by entering a, b, c or d | Display Correct message on points only for 2 seconds and then reloads new question. | Working as expected | ![](/assets/images/correct_small.png) |
+| User answers first question incorrectly. | Display "no points" game over page | Working as expected | ![](/assets/images/game_over_no_correct_small.png) |
+|  User answers question incorrectly by entering a, b, c or d. | Display game over page | Working as expected | ![](/assets/images/game_over_small.png) |
+| User enters random character or empty enter. | Display red error message and show correct options. | Working as expected | ![](/assets/images/invalid_quiz_entry.png) |
 
 ### Game over page Testing.
 ![](/assets/images/game_over_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
 
-
-### Game over and no correct page Testing.
-![](/assets/images/high_scores_small.png)
+### Game over and "no points" page Testing.
+![](/assets/images/game_over_no_correct_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
-
 
 ### Exit game page Testing.
 ![](/assets/images/exit_small.png)
