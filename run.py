@@ -1,6 +1,7 @@
 import random
 from string import ascii_lowercase
 import pathlib
+# import tomli as tomllib. Was added because of backwards compatibility.
 try:
     import tomllib
 except ModuleNotFoundError:
@@ -48,17 +49,18 @@ def clear():
     Function to clear the terminal on windows, mac and
     linux for a better user experience.
     """
-    # for windows
+    # for Windows
     if os.name == 'nt':
         os.system('cls')
-    # for mac and linux(here, os.name is 'posix')
+    # for Mac and Linux (here, os.name is 'posix')
     else:
         os.system('clear')
 
 
 def welcome_page():
     """
-    Loaded up first when terminal opened, greets user and asks for their name.
+    Loaded up first when the terminal opened, greets the user and asks for
+    their name.
     """
     global USER_NAME
     print(ASCII_BANNER)
@@ -85,7 +87,8 @@ def welcome_page():
 
 def main_menu_page():
     """
-     with various options.
+     Loads "Main menu" with 4 game options.
+     Also checks for valid input.
     """
     print(ASCII_BANNER)
     print(f"Welcome {BL + USER_NAME + R}!")
@@ -145,7 +148,7 @@ def game_instructions():
     print("name on the leaderboard.\n")
     print("To end the game during play, you can enter letter Q to")
     print("return to main menu")
-    print("but points you worked so hard to get are lost forever.\n")
+    print("but points you worked so hard to get, are lost forever.\n")
     try:
         input(f" {YL}-> Press Enter to go back to main menu...{R}\n")
         clear()
@@ -157,8 +160,9 @@ def game_instructions():
 def high_scores():
     """
     Gets to top 10 high scores from google sheets and displays them on
-    the screen. Using tabulate prints top 10 results. Sorts results
-    using sort(). Also has option to return to main menu by pressing enter key.
+    the screen. Using tabulate prints top 10 results. Sort results
+    using sort(). Also has the option to return to the main menu by pressing
+    enter key.
     """
     ascii_hi_scores = GR + pyfiglet.figlet_format(
         "High Scores.", font="rectangles", justify="center"
@@ -179,13 +183,13 @@ def high_scores():
 
 def game_over():
     """
-    This function is loaded when user answers a question wrong and giving them
-    option to play again. Uploads final score to Google sheets.
+    This function is loaded when the user answers a question wrong and gives
+    the option to play again. Uploads final score to Google Sheets.
     """
     while True:
         try:
             game_over_user = input(F"""{YL}Would you like to play again?
-Type Y for yes or Q to go back to main menu: {R}\n""").lower()
+Type Y for yes or Q to go back to the main menu: {R}\n""").lower()
         except ValueError:
             print(F"\n{RD}Not a valid option, please enter Y or Q{R}\n")
         if game_over_user == "q":
@@ -244,9 +248,10 @@ def run_game():
             if answer_label == "q":
                 clear()
                 main_menu_page()
-            print(f"""\n{RD}Not a valid option!
-Please enter {','.join(labeled_alternatives)} or Q to quit to main menu{R}""")
-
+            print(f"\n{RD}Not a valid option!")
+            print(
+                f"Please enter {','.join(labeled_alternatives)}\
+                    or Q to quit to the main menu{R}""")
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:
             clear()
