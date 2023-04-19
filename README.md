@@ -195,20 +195,47 @@ Also posted this project to Slack Peer code review and to my class page. One typ
 | User enters a valid name. | App to load "Main Menu" page. | Working as expected |     |
 
 ### Main menu page Testing.
-![]()
+![](/assets/images/menu_page_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
 
 ### Game Instructions page Testing.
-![]()
+![](/assets/images/instructions_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
 
 ### High scores page Testing.
-![]()
+![](/assets/images/high_scores_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
 
+### Quiz page Testing.
+![](/assets/images/quiz_page_small.png)
+| Action | Expected Result | Actual Result | Image |
+| --- | --- | --- | --- |
+
+
+### User answer correct.
+![](/assets/images/correct_small.png)
+| Action | Expected Result | Actual Result | Image |
+| --- | --- | --- | --- |
+
+### Game over page Testing.
+![](/assets/images/game_over_small.png)
+| Action | Expected Result | Actual Result | Image |
+| --- | --- | --- | --- |
+
+
+### Game over and no correct page Testing.
+![](/assets/images/high_scores_small.png)
+| Action | Expected Result | Actual Result | Image |
+| --- | --- | --- | --- |
+
+
+### Exit game page Testing.
+![](/assets/images/exit_small.png)
+| Action | Expected Result | Actual Result | Image |
+| --- | --- | --- | --- |
 
 
 ## Google Lighthouse testing 

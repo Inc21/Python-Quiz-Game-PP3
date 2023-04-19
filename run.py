@@ -68,17 +68,19 @@ def welcome_page():
         except ValueError:
             clear()
             print(ASCII_BANNER)
-            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters{R}")
-            print(f"{RD}long and can't contain 2 or more spaces.{R}\n")
+
+            print(f"\n{USER_NAME}{RD} is invalid entry!")
+            print("Name must be 2 - 10 characters")
+            print(f"long and can't contain 2 or more spaces.{R}\n")
         if (len(USER_NAME) >= 2 and len(USER_NAME) <= 10 and
                 USER_NAME.count("  ") <= 0):
             break
         else:
             clear()
             print(ASCII_BANNER)
-            print(f"\n{RD}Invalid entry! Name must be 2 - 10 characters{R}")
-            print(f"{RD}long and can't contain 2 or more spaces.{R}\n")
-
+            print(f"\n{USER_NAME}{RD} is invalid entry!")
+            print("Name must be 2 - 10 characters")
+            print(f"long and can't contain 2 or more spaces.{R}\n")
 
 
 def main_menu_page():
