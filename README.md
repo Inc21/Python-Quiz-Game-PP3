@@ -185,22 +185,30 @@ Also posted this project to Slack Peer code review and to my class page. One typ
 | As a app creator, I want the app to be visually pleasant and readable. | Ome colors, ascii text and line spacings were added to this terminal app to make it more user friendly |
 
 
-### Link testing
-
-| Action | Expected Result | Actual Result |
-| --- | --- | --- |
-|     |     | Working as expected |
-
-
-###  Manual Testing.
-
+### Welcome Screen Testing.
+![](/assets/images/welcome_page_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
-|     |     | Working as expected |     |
-|     |     | Working as expected |     |
-|     |     | Working as expected |     |
-|     |     | Working as expected |     |
-|     |     | Working as expected. |     |
+|  User hits enter without entering a name. | Invalid entry error is displayed along with the examples of correct entries.  | Working as expected | ![](/assets/images/invalid_name.png) |
+| User enters name that is more than 10 characters | Invalid entry error is displayed along with the examples of correct entries.  ! | Working as expected | ![](/assets/images/invalid_name.png) |
+| User enters just 1 character | Invalid entry error is displayed along with the examples of correct entries. | Working as expected | ![](/assets/images/invalid_name.png)|
+| User enters a valid name. | App to load "Main Menu" page. | Working as expected |     |
+
+### Main menu page Testing.
+![]()
+| Action | Expected Result | Actual Result | Image |
+| --- | --- | --- | --- |
+
+### Game Instructions page Testing.
+![]()
+| Action | Expected Result | Actual Result | Image |
+| --- | --- | --- | --- |
+
+### High scores page Testing.
+![]()
+| Action | Expected Result | Actual Result | Image |
+| --- | --- | --- | --- |
+
 
 
 ## Google Lighthouse testing 
