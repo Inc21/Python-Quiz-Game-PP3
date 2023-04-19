@@ -15,7 +15,7 @@ The game is Deployed on Code Institute mock terminal on Heroku. Live app can be 
 
 ### New User.
 
-- I want to see instructions how to play this game.
+- I want to see clear instructions how to play this game.
 - I want to be challenged and test my Python knowledge.
 - I want to be able to see my score on the leaderboard and how it stacks up to the competition.
 
@@ -28,7 +28,7 @@ The game is Deployed on Code Institute mock terminal on Heroku. Live app can be 
 
 - As a app creator, I want to provide fun learning experience.
 - As a app creator, I want to add competitive element to the quiz.
-- As a app creator, I want to be visually pleasant and readable.
+- As a app creator, I want the app to be visually pleasant and readable.
 
 # Design
 
@@ -84,7 +84,7 @@ Arial is used for this app as per Code Institute template. Added custom ascii he
 - [GitHub](https://github.com/) for hosting repositories.
 - [Heroku](https://www.heroku.com/) where game is deployed using [Code Institute](https://codeinstitute.net/ie/) Python template.
 - [Grammarly](https://www.grammarly.com/) was used to double-check spelling mistakes.
-- [Website Mockup Generator](https://websitemockupgenerator.com/) Responsive website mockup screenshot generator.
+- [Magic Mockups](http://magicmockups.com/) Responsive website mockup screenshot generator.
 
 ## Existing Features
 
@@ -173,18 +173,17 @@ Also posted this project to Slack Peer code review and to my class page. One typ
 
 ### User Stories Testing
 
-| Expectation | Result | Images |
-| --- | --- | --- |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam diam. In semper aliquet mi eget dignissim. Etiam pharetra elit id interdum accumsan. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam diam. In semper aliquet mi eget dignissim. Etiam pharetra elit id interdum accumsan. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam diam. In semper aliquet mi eget dignissim. Etiam pharetra elit id interdum accumsan. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam diam. In semper aliquet mi eget dignissim. Etiam pharetra elit id interdum accumsan. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |     |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |     |
+| Expectation | Solution |
+| --- | --- |
+| I want to see clear instructions how to play this game. | Game instruction section provided (option 2) in main menu. Also correct option examples provided when user makes a mistake. |
+| I want to be challenged and test my Python knowledge. | 25 various Python related questions are provided. |
+| I want to be able to see my score on the leaderboard and how it stacks up to the competition. | If the user is lucky to score enough point leaderboard section (option 3) in main menu is provided. |
+| As a returning user, I want to start the game quick without having to go through how to play instructions again. | Option 1 in main menu will take user straight to the game and displays first question. |
+| As a returning user, I want to see and beat my previous score. | Leaderboard section (option 3) in main menu is provided. |
+| As a app creator, I want to provide fun learning experience. | If user answers question wrong, correct answer is provided for added learning |
+| As a app creator, I want to add competitive element to the quiz. | Game records points and ends as soon as user answers question incorrectly hopefully making user want to come back and best their score. |
+| As a app creator, I want the app to be visually pleasant and readable. | Ome colors, ascii text and line spacings were added to this terminal app to make it more user friendly |
+
 
 ### Link testing
 
