@@ -90,14 +90,20 @@ def main_menu_page():
      Loads "Main menu" with 4 game options.
      Also checks for valid input.
     """
-    print(ASCII_BANNER)
-    print(f"Welcome {BL + USER_NAME + R}!")
-    print(f"Please select {YL}1, 2, 3 or 4{R} from the Main Menu below.\n ")
-    print(f"{YL}1){R} Play the Quiz.")
-    print(f"{YL}2){R} Game Instructions.")
-    print(f"{YL}3){R} High Scores.")
-    print(f"{YL}4){R} Exit Game.\n")
+    def menu_options():
+        """
+        Nested function to be printed on the screen after users
+        repeated non valid entries.
+        """
+        print(ASCII_BANNER)
+        print(f"Welcome {BL + USER_NAME + R}!")
+        print(f"Please select {YL}1, 2, 3 or 4{R} from the Main Menu below.\n ")
+        print(f"{YL}1){R} Play the Quiz.")
+        print(f"{YL}2){R} Game Instructions.")
+        print(f"{YL}3){R} High Scores.")
+        print(f"{YL}4){R} Exit Game.\n")
 
+    menu_options()
     while True:
         user_option = 0
         try:
@@ -120,9 +126,15 @@ def main_menu_page():
                 sleep(4)
                 exit()
             else:
+                clear()
+                menu_options()
+                sleep(0.2)
                 print(f"{RD}\nNot a valid entry!{R}")
                 print(f"{RD}Please enter 1, 2, 3 or 4!{R}")
         except ValueError:
+            clear()
+            menu_options()
+            sleep(0.2)
             print(f"{RD}\nNot a valid entry!{R}")
             print(f"{RD}Please enter 1, 2, 3 or 4!{R}")
 
