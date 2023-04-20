@@ -37,7 +37,7 @@ The game is Deployed on Code Institute mock terminal on Heroku. The live app can
 - As this game is developed with Python and designed to be run in the terminal, not too many design options are available. The main emphasis of this app is readability. 
 
 ## Colour
-- To add a small bit of colour to text [Python colored](https://pypi.org/project/colored/ "Python colored.") module was used.
+- To add a small bit of colour to the text [Python colored](https://pypi.org/project/colored/ "Python colored.") module was used.
 
 | Image | Color |
 |---|---|
@@ -77,12 +77,12 @@ Arial is used for this app as per the Code Institute template. Added custom asci
 
 ## Other tools and programs.
 
-- [Lucid](https://lucid.co/) was used to create flow charts.
+- [Lucid](https://lucid.co/) was used when creating flow charts.
 - [Visual Studio Code.](https://code.visualstudio.com/) Did all of my coding and synchronizing with GitHub on VS Code.
-- [Google](https://www.google.ie/?gws_rd=ssl) sheets to store leaderboard.
+- [Google](https://www.google.ie/?gws_rd=ssl) Sheets to store leaderboard.
 - [Git](https://git-scm.com/) for version control.
 - [GitHub](https://github.com/) for hosting repositories.
-- [Heroku](https://www.heroku.com/) where game is deployed using [Code Institute](https://codeinstitute.net/ie/) Python template.
+- [Heroku](https://www.heroku.com/) where the game is deployed using the [Code Institute](https://codeinstitute.net/ie/) Python template.
 - [Grammarly](https://www.grammarly.com/) was used to double-check spelling mistakes.
 - [Magic Mockups](http://magicmockups.com/) Responsive website mockup screenshot generator.
 
@@ -175,13 +175,13 @@ Also posted this project to Slack Peer code review and my class page. One typo w
 
 | Expectation | Solution |
 | --- | --- |
-| I want to see clear instructions on how to play this game. | Game instruction section provided (option 2) in the main menu. Also, correct option examples are provided when the user makes a mistake. |
+| I want to see clear instructions on how to play this game. | Game instruction section is provided (option 2) in the main menu. Also, correct option examples are provided when the user makes a mistake. |
 | I want to be challenged and test my Python knowledge. | 25 various Python-related questions are provided. |
 | I want to be able to see my score on the leaderboard and how it stacks up to the competition. | If the user is lucky to score enough point leaderboard section (option 3) in the main menu is provided. |
 | As a returning user, I want to start the game quickly without having to go through how-to-play instructions again. | Option 1 in the main menu will take the user straight to the game and displays the first question. |
-| As a returning user, I want to see and beat my previous score. | Leaderboard section (option 3) in the main menu is provided. |
+| As a returning user, I want to see and beat my previous score. | A leaderboard section (option 3) in the main menu is provided. |
 | As an app creator, I want to provide a fun learning experience. | If the user answers a question wrong, the correct answer is provided for added learning |
-| As an app creator, I want to add a competitive element to the quiz. | Game records points and ends as soon as the user answers a question incorrectly hopefully making the user want to come back and beat their score. |
+| As an app creator, I want to add a competitive element to the quiz. | The game records the user's points and ends the game as soon as the user answers a question incorrectly hopefully making the user want to come back and beat their score. |
 | As an app creator, I want the app to be visually pleasant and readable. | Some colors, ascii text and line spacings were added to this terminal app to make it more user-friendly |
 
 
@@ -189,9 +189,9 @@ Also posted this project to Slack Peer code review and my class page. One typo w
 ![](/assets/images/welcome_page_small.png)
 | Action | Expected Result | Actual Result | Image |
 | --- | --- | --- | --- |
-|  User hits enter without entering a name. | Invalid entry error is displayed along with examples of correct entries.  | Working as expected | ![](/assets/images/invalid_user_none.png) |
-| User enters name that is more than 10 characters | Invalid entry error is displayed along with the examples of correct entries.  ! | Working as expected | ![](/assets/images/invalid_user.png) |
-| User enters just 1 character | Invalid entry error is displayed along with the examples of correct entries. | Working as expected | ![](/assets/images/invalid_user_1.png)|
+| The user hits enter without entering a name. | Invalid entry error is displayed along with examples of correct entries.  | Working as expected | ![](/assets/images/invalid_user_none.png) |
+| The user enters a name that is more than 10 characters | Invalid entry error is displayed along with the examples of correct entries.  ! | Working as expected | ![](/assets/images/invalid_user.png) |
+| The user enters just 1 character | Invalid entry error is displayed along with examples of correct entries. | Working as expected | ![](/assets/images/invalid_user_1.png)|
 | User enters a valid name. | App to load the "Main Menu" page. | Working as expected |     |
 
 ### Main menu page Testing.
