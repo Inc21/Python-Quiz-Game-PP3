@@ -129,14 +129,14 @@ def main_menu_page():
                 clear()
                 menu_options()
                 sleep(0.2)
-                print(f"{RD}\nNot a valid entry!{R}")
-                print(f"{RD}Please enter 1, 2, 3 or 4!{R}")
+                print(f"{RD}Not a valid entry!{R}")
+                print(f"{RD}Please enter 1, 2, 3 or 4!{R}\n")
         except ValueError:
             clear()
             menu_options()
             sleep(0.2)
-            print(f"{RD}\nNot a valid entry!{R}")
-            print(f"{RD}Please enter 1, 2, 3 or 4!{R}")
+            print(f"{RD}Not a valid entry!{R}")
+            print(f"{RD}Please enter 1, 2, 3 or 4!{R}\n")
 
 
 def game_instructions():
@@ -241,7 +241,7 @@ def run_game():
         correct_answer = alternatives[0]
         labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
         for label, alternative in labeled_alternatives.items():
-            print(f" {label}) {alternative}")
+            print(f" {YL}{label.upper()}){R} {alternative}")
         if num_correct == 25:
             clear()
             print(ascii_winner)
@@ -260,17 +260,28 @@ def run_game():
             if answer_label == "q":
                 clear()
                 main_menu_page()
-            print(f"\n{RD}Not a valid option!")
-            print(
-                f"Please enter {','.join(labeled_alternatives)}\
-                    or Q to quit to the main menu{R}""")
+            else:
+                clear()
+                print(ASCII_BANNER)
+                print(f"\n{YL}Question {num}:{R}")
+                print(f"\n{question}\n")
+                for label, alternative in labeled_alternatives.items():
+                    print(f" {YL}{label.upper()}){R} {alternative}")
+                sleep(0.2)
+                print(f"\n{RD}Not a valid option!")
+                print(
+                f"Please enter {','.join(labeled_alternatives).upper()}\
+ or Q to quit to the main menu{R}""")
+
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:
             clear()
             print(ascii_correct)
             POINTS += 10
             num_correct += 1
-            print(f"{GR}You have {POINTS} points.{R}")
+            correct_message = str(f"{GR}You have {POINTS} points.{R}")
+            correct = correct_message.center(95)
+            print(correct)
             sleep(2)
             clear()
         elif answer != correct_answer and num_correct == 0:
