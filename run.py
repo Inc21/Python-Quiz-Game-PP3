@@ -35,9 +35,13 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz_leaderboard')
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
+
 ASCII_BANNER = GR + pyfiglet.figlet_format(
     "Python Quiz Game.", font="rectangles", justify="center"
     ) + R
+ASCII_GAME_OVER = RD + pyfiglet.figlet_format(
+        "Game Over!", font="rectangles", justify="center"
+        ) + R
 
 # Global variables that will be defined in functions.
 USER_NAME = ""
@@ -97,7 +101,9 @@ def main_menu_page():
         """
         print(ASCII_BANNER)
         print(f"Welcome {BL + USER_NAME + R}!")
-        print(f"Please select {YL}1, 2, 3 or 4{R} from the Main Menu below.\n ")
+        print(
+            f"Please select {YL}1, 2, 3 or 4{R} from the Main Menu below.\n "
+            )
         print(f"{YL}1){R} Play the Quiz.")
         print(f"{YL}2){R} Game Instructions.")
         print(f"{YL}3){R} High Scores.")
@@ -203,6 +209,9 @@ def game_over():
             game_over_user = input(F"""{YL}Would you like to play again?
 Type Y for yes or Q to go back to the main menu: {R}\n""").lower()
         except ValueError:
+            clear()
+            print(ASCII_GAME_OVER)
+            sleep(0.2)
             print(F"\n{RD}Not a valid option, please enter Y or Q{R}\n")
         if game_over_user == "q":
             clear()
@@ -212,6 +221,8 @@ Type Y for yes or Q to go back to the main menu: {R}\n""").lower()
             run_game()
         else:
             clear()
+            print(ASCII_GAME_OVER)
+            sleep(0.2)
             print(F"\n{RD}Not a valid option, please enter Y or Q{R}\n")
 
 
@@ -224,9 +235,6 @@ def run_game():
     global POINTS
     ascii_correct = GR + pyfiglet.figlet_format(
         "Correct!", font="rectangles", justify="center"
-        ) + R
-    ascii_game_over = RD + pyfiglet.figlet_format(
-        "Game Over!", font="rectangles", justify="center"
         ) + R
     ascii_winner = GD + pyfiglet.figlet_format(
         "Winner Winner!", font="rectangles", justify="center"
@@ -270,7 +278,7 @@ def run_game():
                 sleep(0.2)
                 print(f"\n{RD}Not a valid option!")
                 print(
-                f"Please enter {','.join(labeled_alternatives).upper()}\
+                    f"Please enter {','.join(labeled_alternatives).upper()}\
  or Q to quit to the main menu{R}""")
 
         answer = labeled_alternatives[answer_label]
@@ -286,14 +294,14 @@ def run_game():
             clear()
         elif answer != correct_answer and num_correct == 0:
             clear()
-            print(ascii_game_over)
+            print(ASCII_GAME_OVER)
             print(f"\nOops {BL + USER_NAME + R}!")
             print(f"The correct answer is {correct_answer!r}, not {answer!r}")
             print("You scored no points this round.\n")
             game_over()
         else:
             clear()
-            print(ascii_game_over)
+            print(ASCII_GAME_OVER)
             print(f"The correct answer is {correct_answer!r},\
  not {answer!r}\n")
             print(f"\nNicely done {BL + USER_NAME + R}!")
